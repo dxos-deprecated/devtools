@@ -1,0 +1,7 @@
+{
+  "name": "devtools",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "GPL-3.0"
+}
