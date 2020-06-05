@@ -1,3 +1,6 @@
+//
+// Copyright 2020 DxOS.
+//
 
 import React, { useState, useEffect } from 'react';
 

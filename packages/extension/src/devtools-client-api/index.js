@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 import Bridge from 'crx-bridge';
 
 Bridge.setNamespace('dxos.devtools');

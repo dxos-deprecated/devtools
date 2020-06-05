@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 /* global HTMLDocument */
 
 import Bridge from 'crx-bridge';

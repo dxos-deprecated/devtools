@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 // Executes in inspectedWindow
 
 export const installHook = window => {

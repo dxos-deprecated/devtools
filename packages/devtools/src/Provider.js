@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 import React, { useContext } from 'react';
 
 export const Context = React.createContext({ });

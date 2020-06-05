@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 // THIS IS REQUIRED FOR BRIDGE TO WORK!!!!!
 import Bridge from 'crx-bridge';
 

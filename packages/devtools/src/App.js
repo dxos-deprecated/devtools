@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DxOS.
+//
+
 import React, { useState } from 'react';
 
 import Tabs from '@material-ui/core/Tabs';

@@ -1,4 +1,8 @@
 
+//
+// Copyright 2020 DxOS.
+//
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
