@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "author": "DxOS",
+  "name": "DxOS Client Developer Tools",
+  "short_name": "DxOS DevTools",
+  "description": "Debugging tools for DxoS Client in the Chrome developer console.",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "permissions": [
+    "storage",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "devtools_page": "devtools.html",
+  "web_accessible_resources": [
+    "devtools.html",
+    "main-panel.html",
+    "devtools-client-api.js"
+  ],
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
