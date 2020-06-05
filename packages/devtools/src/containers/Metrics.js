@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column'
   },
   tabsRoot: {
-    minHeight: 32,
+    minHeight: 32
   },
   tabRoot: {
     minHeight: 32,
@@ -33,13 +33,12 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function Metrics() {
+export default function Metrics () {
   const classes = useStyles();
   const [bridge] = useBridge();
   const [tab, setTab] = useState(0);
 
   const [metrics, setMetrics] = useState({});
-
 
   useEffect(() => {
     bridge.listen('metrics.data', ({ data }) => {
@@ -54,10 +53,9 @@ export default function Metrics() {
 
     return () => {
       if (metricListenerKey) {
-        bridge.send('metrics.removeListen', {  key: metricListenerKey });
+        bridge.send('metrics.removeListen', { key: metricListenerKey });
       }
     };
-
   }, [bridge]);
 
   const handleTabChange = (event, newValue) => {
@@ -70,18 +68,18 @@ export default function Metrics() {
         value={tab}
         onChange={handleTabChange}
         className={classes.tabs}
-        textColor="primary"
-        indicatorColor="primary"
+        textColor='primary'
+        indicatorColor='primary'
         classes={{ root: classes.tabsRoot }}
       >
-        <Tab label="Data" classes={{ root: classes.tabRoot }} />
-        <Tab label="Events" classes={{ root: classes.tabRoot }} />
+        <Tab label='Data' classes={{ root: classes.tabRoot }} />
+        <Tab label='Events' classes={{ root: classes.tabRoot }} />
       </Tabs>
       <div className={classes.tabContent} hidden={tab !== 0}>
-        <JsonTreeView className={classes.jsonTreeView} size="small" data={{ ...metrics.values }} depth={4} />
+        <JsonTreeView className={classes.jsonTreeView} size='small' data={{ ...metrics.values }} depth={4} />
       </div>
       <div className={classes.tabContent} hidden={tab !== 1}>
-        <JsonTreeView className={classes.jsonTreeView} size="small" data={{ ...metrics.events }} depth={4} />
+        <JsonTreeView className={classes.jsonTreeView} size='small' data={{ ...metrics.events }} depth={4} />
       </div>
     </div>
   );

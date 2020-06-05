@@ -57,7 +57,7 @@ const Keys = () => {
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
-        <AutocompleteFilter label="Topic" types={topics} onChange={onTopicChange} value={topic} />
+        <AutocompleteFilter label='Topic' types={topics} onChange={onTopicChange} value={topic} />
       </div>
       <div className={classes.keys}>
         <KeyTable keys={keys} />

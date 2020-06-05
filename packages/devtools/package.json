@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build": "npm run clean && babel ./src --out-dir ./dist/es --ignore \"**/*.test.js\" --source-maps inline",
-    "lint": "eslint ./src --ignore-path ../../.eslintignore",
+    "lint": "semistandard 'src/**/*.js'",
     "test": "jest --rootDir ./src --verbose --passWithNoTests"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "babel-plugin-add-module-exports": "^1.0.0",
     "copy-webpack-plugin": "^6.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "semistandard": "^14.2.0"
   }
 }

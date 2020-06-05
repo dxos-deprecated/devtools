@@ -20,7 +20,7 @@ const AutocompleteFilter = ({ label, types = [], onChange, value = null }) => {
   return (
     <Autocomplete
       className={classes.input}
-      size="small"
+      size='small'
       freeSolo
       autoComplete
       clearOnEscape
@@ -34,7 +34,7 @@ const AutocompleteFilter = ({ label, types = [], onChange, value = null }) => {
       }}
       options={types}
       renderInput={params => (
-        <TextField {...params} label={label} variant="outlined" fullWidth />
+        <TextField {...params} label={label} variant='outlined' fullWidth />
       )}
     />
   );

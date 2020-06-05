@@ -72,7 +72,7 @@ const KeyTable = ({ keys }) => {
   const sorter = (a, b) => (a.type < b.type ? -1 : a.type > b.type ? 1 : a.own ? -1 : 1);
 
   return (
-    <Table stickyHeader size="small" className={classes.table}>
+    <Table stickyHeader size='small' className={classes.table}>
       <TableHead>
         <TableRow>
           <TableCell className={classes.colType}>Type</TableCell>
@@ -93,20 +93,20 @@ const KeyTable = ({ keys }) => {
                 {truncateString(key, 16)}
                 <CopyToClipboard text={key} onCopy={value => console.log(value)}>
                   <IconButton
-                    color="inherit"
-                    aria-label="copy to clipboard"
-                    title="Copy to clipboard"
-                    edge="end"
+                    color='inherit'
+                    aria-label='copy to clipboard'
+                    title='Copy to clipboard'
+                    edge='end'
                   >
                     <LinkIcon />
                   </IconButton>
                 </CopyToClipboard>
               </TableCell>
               <TableCell title={added}>{moment(added).fromNow()}</TableCell>
-              <TableCell align="center">
+              <TableCell align='center'>
                 <BooleanIcon yes={own} />
               </TableCell>
-              <TableCell align="center">
+              <TableCell align='center'>
                 <BooleanIcon yes={trusted} error={!trusted} />
               </TableCell>
             </TableRow>

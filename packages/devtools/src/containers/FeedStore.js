@@ -14,7 +14,6 @@ import { truncateString } from '@dxos/debug';
 
 import { useBridge } from '../Provider';
 
-
 const useStyles = makeStyles(() => ({
   table: {
     tableLayout: 'fixed'
@@ -77,7 +76,7 @@ const FeedStore = () => {
 
   return (
     <TableContainer>
-      <Table stickyHeader size="small" className={classes.table}>
+      <Table stickyHeader size='small' className={classes.table}>
         <TableHead>
           <TableRow>
             <TableCell className={classes.colOpen}>Open</TableCell>

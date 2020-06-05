@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh'
   },
   tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
+    borderRight: `1px solid ${theme.palette.divider}`
   },
   tabsRoot: {
     padding: 0,
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function App() {
+export default function App () {
   const [tab, setTab] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -46,14 +46,14 @@ export default function App() {
       <Tabs
         value={tab}
         onChange={handleTabChange}
-        orientation="vertical"
-        variant="scrollable"
+        orientation='vertical'
+        variant='scrollable'
         className={classes.tabs}
       >
-        <Tab label="Metrics" classes={{ root: classes.tabsRoot }} />
-        <Tab label="FeedStore" classes={{ root: classes.tabsRoot }} />
-        <Tab label="FeedViewer" classes={{ root: classes.tabsRoot }} />
-        <Tab label="Keys" classes={{ root: classes.tabsRoot }} />
+        <Tab label='Metrics' classes={{ root: classes.tabsRoot }} />
+        <Tab label='FeedStore' classes={{ root: classes.tabsRoot }} />
+        <Tab label='FeedViewer' classes={{ root: classes.tabsRoot }} />
+        <Tab label='Keys' classes={{ root: classes.tabsRoot }} />
       </Tabs>
       <div className={classes.tabContent} hidden={tab !== 0}>
         <Metrics />

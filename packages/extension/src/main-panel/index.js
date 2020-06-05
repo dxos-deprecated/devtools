@@ -9,7 +9,7 @@ Bridge.allowWindowMessaging('dxos.devtools');
 
 const { tabId } = chrome.devtools.inspectedWindow;
 
-function injectScript(scriptName, cb) {
+function injectScript (scriptName, cb) {
   const src = `
     (function() {
       var script = document.constructor.prototype.createElement.call(document, 'script');
@@ -25,13 +25,13 @@ function injectScript(scriptName, cb) {
 }
 
 initDevTool({
-  connect(onConnect) {
+  connect (onConnect) {
     injectScript(chrome.runtime.getURL('devtools-client-api.js'), () => {
-      const bridge =  {
-        async send(message, payload = {}) {
+      const bridge = {
+        async send (message, payload = {}) {
           return Bridge.sendMessage(message, payload, 'window');
         },
-        listen(message, fn) {
+        listen (message, fn) {
           Bridge.onMessage(message, fn);
         }
       };
@@ -42,7 +42,7 @@ initDevTool({
 
   tabId,
 
-  onReload(reloadFn) {
+  onReload (reloadFn) {
     chrome.devtools.network.onNavigated.addListener(reloadFn);
   }
 });

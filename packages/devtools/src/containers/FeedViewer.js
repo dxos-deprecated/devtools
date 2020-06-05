@@ -60,7 +60,6 @@ const FeedViewer = () => {
         bridge.send('feed.removeListen', { key: feedListenerKey });
       }
     };
-
   }, [bridge, topic, type]);
 
   const onTopicChange = (value) => {
@@ -79,8 +78,8 @@ const FeedViewer = () => {
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
-        <AutocompleteFilter label="Topic" types={topics} onChange={onTopicChange} value={topic} />
-        <AutocompleteFilter label="Message Type" types={types} onChange={onTypeChange} value={type} />
+        <AutocompleteFilter label='Topic' types={topics} onChange={onTopicChange} value={topic} />
+        <AutocompleteFilter label='Message Type' types={types} onChange={onTypeChange} value={type} />
       </div>
 
       <div className={classes.feed}>

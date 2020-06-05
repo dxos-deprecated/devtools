@@ -17,7 +17,7 @@ const init = () => {
     const metricslisteners = new Map();
 
     const onMetrics = senderName => () => {
-      const data =  {
+      const data = {
         values: hook.metrics.values,
         events: hook.metrics.events
       };
@@ -62,7 +62,6 @@ const init = () => {
         .map(({ metadata }) => metadata.topic);
     });
 
-
     // FEED +++++++++++
 
     const feedListeners = new Map();
@@ -70,7 +69,7 @@ const init = () => {
     const messagesHandler = senderName => model => {
       const data = model ? [
         ...model.messages
-          .map(({ key, seq, data  }) => ({ key: key.toString('hex'), seq, data  }))]
+          .map(({ key, seq, data }) => ({ key: key.toString('hex'), seq, data }))]
         : [];
       Bridge.sendMessage('feed.data', data, senderName);
     };
@@ -95,7 +94,6 @@ const init = () => {
       });
 
       return listenerKey;
-
     });
 
     Bridge.onMessage('feed.removeListen', async ({ data: { key } }) => {
@@ -126,7 +124,7 @@ const init = () => {
         }));
     });
 
-    Bridge.onMessage('keyring.keys',  () => {
+    Bridge.onMessage('keyring.keys', () => {
       const { client: { keyring } } = hook;
 
       return keyring.keys

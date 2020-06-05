@@ -1,3 +1,4 @@
+/* global HTMLDocument */
 
 import Bridge from 'crx-bridge';
 import { installHook } from './hook';
@@ -31,7 +32,6 @@ if (document instanceof HTMLDocument) {
 
 //   Bridge.sendMessage('content.metrics.metric', message.data, 'devtools');
 // });
-
 
 // Bridge.onMessage('log', async (message) => {
 //   const { sender, timestamp } = message;

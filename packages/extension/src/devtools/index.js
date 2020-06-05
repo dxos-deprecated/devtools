@@ -13,9 +13,8 @@ let panelCreated = false;
 
 // stop after 10 seconds
 let checkCount = 0;
-let loadCheckInterval;
 
-function createPanel() {
+function createPanel () {
   // stop trying if above 120 seconds or already made
   if (panelCreated || checkCount++ > 120) return;
 
@@ -38,7 +37,7 @@ function createPanel() {
         null,
         'main-panel.html'
       );
-    },
+    }
   );
 }
 
@@ -47,7 +46,7 @@ chrome.devtools.network.onNavigated.addListener(createPanel);
 
 // Attempt to create panel once per second in case
 // DxOS is loaded after page load
-loadCheckInterval = setInterval(createPanel, 1000);
+const loadCheckInterval = setInterval(createPanel, 1000);
 
 // Start the first attempt immediately
 createPanel();

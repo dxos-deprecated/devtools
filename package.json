@@ -1,52 +1,51 @@
 {
   "name": "devtools",
   "version": "1.0.0",
-  "description": "",
   "private": true,
-  "scripts": {
-    "build": "lerna run build",
-    "clean": "lerna run clean",
-    "lint": "lerna run lint",
-    "lint:fix": "lerna run lint -- --fix",
-    "lint:staged": "lint-staged",
-    "test": "lerna run test"
+  "description": "DXOS devtools monorepo.",
+  "homepage": "https://github.com/dxos/protocol#readme",
+  "bugs": {
+    "url": "https://github.com/dxos/protocol/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dxos/devtools.git"
+    "url": "git+https://github.com/dxos/protocol.git"
   },
-  "keywords": [],
-  "author": "DxOS.org",
   "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/dxos/devtools/issues"
-  },
-  "homepage": "https://github.com/dxos/devtools#readme",
   "workspaces": {
     "packages": [
       "packages/*"
     ]
   },
-  "lint-staged": {
-    "*.js": "eslint --ignore-path .eslintignore"
+  "scripts": {
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
+    "lint:fix": "lerna run lint -- --fix",
+    "test": "lerna run test",
+    "posttest": "npm run lint"
   },
-  "pre-commit": [
-    "lint:staged"
-  ],
-  "dependencies": {
-    "lerna": "^3.19.0"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "semistandard"
   },
   "devDependencies": {
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.1.0",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsdoc": "^27.0.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.2",
-    "lint-staged": "^10.2.9",
-    "pre-commit": "^1.2.2"
+    "babel-eslint": "^10.0.2",
+    "husky": "^3.1.0",
+    "lerna": "^3.19.0",
+    "lint-staged": "^9.5.0",
+    "semistandard": "^14.2.0"
+  },
+  "semistandard": {
+    "parser": "babel-eslint",
+    "env": [
+      "jest",
+      "node",
+      "browser"
+    ]
   }
 }
