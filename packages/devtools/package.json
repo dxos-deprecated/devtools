@@ -35,11 +35,20 @@
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "7.9.4",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "copy-webpack-plugin": "^6.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^25.1.0",
     "semistandard": "^14.2.0"
-  }
+  },
+  "semistandard": {
+    "parser": "babel-eslint",
+    "env": [
+      "jest",
+      "node",
+      "browser"
+    ]
+  }  
 }
