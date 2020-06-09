@@ -1,20 +1,21 @@
 //
 // Copyright 2020 DxOS.
 //
-
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const ExtensionReloader = require('webpack-extension-reloader');
 
 module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
-    'hook': `${__dirname}/src/hook.js`,
-    'devtools': `${__dirname}/src/devtools/index.js`,
+    hook: `${__dirname}/src/hook.js`,
+    devtools: `${__dirname}/src/devtools/index.js`,
     'main-panel': `${__dirname}/src/main-panel/index.js`,
     'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
-    'background': `${__dirname}/src/background.js`,
+    background: `${__dirname}/src/background.js`,
     'content-script': `${__dirname}/src/content-script.js`
   },
 
@@ -24,17 +25,21 @@ module.exports = {
   },
 
   plugins: [
+    new ExtensionReloader({
+      manifest: path.resolve(__dirname, 'src', 'manifest.json')
+    }),
+
     new HtmlWebPackPlugin({
       title: 'Devtools',
       chunks: ['devtools'],
       filename: 'devtools.html',
-      template: 'src/devtools/template.html',
+      template: 'src/devtools/template.html'
     }),
     new HtmlWebPackPlugin({
       title: 'DxOS',
       chunks: ['main-panel'],
       filename: 'main-panel.html',
-      template: 'src/main-panel/template.html',
+      template: 'src/main-panel/template.html'
     }),
     new CopyWebPackPlugin({
       patterns: [

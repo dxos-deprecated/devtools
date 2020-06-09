@@ -16,7 +16,6 @@ import Keys from './containers/Keys';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    display: 'flex',
     height: '100vh'
   },
   tabs: {
@@ -50,9 +49,6 @@ export default function App () {
       <Tabs
         value={tab}
         onChange={handleTabChange}
-        orientation='vertical'
-        variant='scrollable'
-        className={classes.tabs}
       >
         <Tab label='Metrics' classes={{ root: classes.tabsRoot }} />
         <Tab label='FeedStore' classes={{ root: classes.tabsRoot }} />

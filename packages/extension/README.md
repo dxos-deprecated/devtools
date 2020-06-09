@@ -35,6 +35,10 @@ DXOS devtools
 
 ...
 
+## Development
+
+Run the `yarn build:watch` for both `extension` and `devtools` and open the devtools in your browser.
+
 ## Contributing
 
 PRs accepted.
