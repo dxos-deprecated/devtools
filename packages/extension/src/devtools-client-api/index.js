@@ -9,8 +9,16 @@ Bridge.allowWindowMessaging('dxos.devtools');
 
 // ensure that client is ready before init
 let started = false;
+let checkCount = 0;
+
 const init = () => {
-  if (window.__DXOS_GLOBAL_HOOK__) {
+  if (checkCount++ > 10) {
+    if (loadCheckInterval) clearInterval(loadCheckInterval);
+    Bridge.sendMessage('api.timeout', {}, 'devtools');
+    return;
+  }
+
+  if (window.__DXOS_GLOBAL_HOOK__ && !started) {
     started = true;
     const hook = window.__DXOS_GLOBAL_HOOK__;
 
@@ -137,10 +145,10 @@ const init = () => {
         }));
     });
 
-    return;
+    if (loadCheckInterval) clearInterval(loadCheckInterval);
+    Bridge.sendMessage('api.ready', {}, 'devtools');
   }
-  setTimeout(init, 500);
 };
 
+const loadCheckInterval = setInterval(init, 1000);
 init();
-if (!started) setTimeout(init, 500);

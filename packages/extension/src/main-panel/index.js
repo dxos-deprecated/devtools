@@ -4,12 +4,12 @@
 
 /* global chrome */
 
-import Bridge from 'crx-bridge';
-
+// import Bridge from 'crx-bridge';
 import { initDevTool } from '@dxos/devtools';
+import BridgeProxy from './bridge';
 
-Bridge.setNamespace('dxos.devtools');
-Bridge.allowWindowMessaging('dxos.devtools');
+// Bridge.setNamespace('dxos.devtools');
+// Bridge.allowWindowMessaging('dxos.devtools');
 
 const { tabId } = chrome.devtools.inspectedWindow;
 
@@ -28,20 +28,47 @@ function injectScript (scriptName, cb) {
   });
 }
 
+let injected = false;
+
 initDevTool({
   connect (onConnect) {
-    injectScript(chrome.runtime.getURL('devtools-client-api.js'), () => {
-      const bridge = {
-        async send (message, payload = {}) {
-          return Bridge.sendMessage(message, payload, 'window');
-        },
-        listen (message, fn) {
-          Bridge.onMessage(message, fn);
-        }
-      };
+    // const bridge = {
+    //   async send (message, payload = {}) {
+    //     return Bridge.sendMessage(message, payload, 'window');
+    //   },
 
-      onConnect(bridge);
-    });
+    //   listen (message, fn) {
+    //     Bridge.onMessage(message, fn);
+    //   },
+
+    //   _state: undefined,
+
+    //   ready(value) {
+    //     this._ready = value;
+    //     if (this._readyCb) this._readyCb(value);
+    //   },
+
+    //   onReady(cb) {
+    //     if(this._ready !== undefined) cb(this._ready);
+    //     this._readyCb = cb;
+    //   }
+    // };
+    const bridge = new BridgeProxy();
+    onConnect(bridge);
+
+    // Bridge.onMessage('api.ready', () => {x
+    //   bridge.ready(true);
+    // });
+
+    // Bridge.onMessage('api.timeout', () => {
+    //   bridge.ready(false);
+    // });
+
+    if (!injected) {
+      injectScript(chrome.runtime.getURL('devtools-client-api.js'), () => {
+        injected = true;
+      });
+    }
   },
 
   tabId,
