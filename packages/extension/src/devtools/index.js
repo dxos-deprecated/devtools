@@ -4,17 +4,7 @@
 
 /* global chrome */
 
-console.log('devtool');
-
-// chrome.devtools.panels.create(
-//   'DxOS',
-//   null,
-//   'devtools-main.html'
-// );
-
 let panelCreated = false;
-
-// stop after 10 seconds
 let checkCount = 0;
 
 function createPanel () {
@@ -25,8 +15,8 @@ function createPanel () {
   chrome.devtools.inspectedWindow.eval(
     '!!(window.__DXOS__);',
     (result, isException) => {
-      // XXX how should we better handle this error?
-      if (isException) console.log('DxOS devtools', isException);
+      // TODO(elmasse) how should we better handle this error?
+      if (isException) console.log('DXOS devtools', isException);
 
       // already created or no client
       if (!result || panelCreated) return;
@@ -36,7 +26,7 @@ function createPanel () {
       panelCreated = true;
 
       chrome.devtools.panels.create(
-        'DxOS',
+        'DXOS',
         null,
         'main-panel.html'
       );

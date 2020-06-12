@@ -1,3 +1,6 @@
+//
+// Copyright 2020 DxOS.
+//
 
 import EventEmitter from 'events';
 import Bridge from 'crx-bridge';

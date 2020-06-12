@@ -5,8 +5,6 @@
 // Executes in inspectedWindow
 
 export const installHook = window => {
-  console.log('install hook');
-
   const createGlobal = () => {
     if (window.__DXOS__) {
       clearInterval(loadCheckInterval);
