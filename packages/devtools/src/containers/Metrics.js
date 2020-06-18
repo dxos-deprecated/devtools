@@ -51,12 +51,12 @@ export default function Metrics () {
     let metricListenerKey;
 
     (async () => {
-      metricListenerKey = await bridge.send('metrics.listen');
+      metricListenerKey = await bridge.send('metrics.subscribe');
     })();
 
     return () => {
       if (metricListenerKey) {
-        bridge.send('metrics.removeListen', { key: metricListenerKey });
+        bridge.send('metrics.unsubscribe', { key: metricListenerKey });
       }
     };
   }, [bridge]);

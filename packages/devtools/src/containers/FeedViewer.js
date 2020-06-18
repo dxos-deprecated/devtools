@@ -51,13 +51,13 @@ const FeedViewer = () => {
 
     if (topic) {
       (async () => {
-        feedListenerKey = await bridge.send('feed.listen', { topic, type });
+        feedListenerKey = await bridge.send('feed.subscribe', { topic, type });
       })();
     }
 
     return () => {
       if (feedListenerKey) {
-        bridge.send('feed.removeListen', { key: feedListenerKey });
+        bridge.send('feed.unsubscribe', { key: feedListenerKey });
       }
     };
   }, [bridge, topic, type]);
