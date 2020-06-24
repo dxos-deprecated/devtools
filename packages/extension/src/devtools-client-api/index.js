@@ -13,7 +13,7 @@ let started = false;
 let checkCount = 0;
 
 const init = () => {
-  if (checkCount++ > 10) {
+  if (checkCount++ > 100) {
     if (loadCheckInterval) clearInterval(loadCheckInterval);
     Bridge.sendMessage('api.timeout', {}, 'devtools');
     return;
