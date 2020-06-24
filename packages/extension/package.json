@@ -50,6 +50,9 @@
     "webpack-cli": "^3.3.11",
     "webpack-extension-reloader": "^1.1.4"
   },
+  "browserslist": [
+    "> 5%"
+  ],
   "semistandard": {
     "parser": "babel-eslint",
     "env": [

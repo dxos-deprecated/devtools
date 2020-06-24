@@ -44,6 +44,9 @@
     "jest": "^25.1.0",
     "semistandard": "^14.2.0"
   },
+  "browserslist": [
+    "> 5%"
+  ],  
   "semistandard": {
     "parser": "babel-eslint",
     "env": [
