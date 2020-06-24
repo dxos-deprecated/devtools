@@ -35,7 +35,7 @@ export default ({ hook, bridge }) => {
     return listenerKey;
   });
 
-  bridge.onMessage('feed.', async ({ data: { key } }) => {
+  bridge.onMessage('feed.unsubscribe', async ({ data: { key } }) => {
     const removeListener = feedListeners.get(key);
     if (removeListener) {
       removeListener();
