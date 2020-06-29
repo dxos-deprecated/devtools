@@ -18,7 +18,10 @@ export default ({ hook, bridge }) => {
 
     const model = await hook.client.modelFactory
       .createModel(undefined, {
+        subscriptionOptions: { feedLevelIndexInfo: true },
+        // TODO(elmasse): old modelFactory implementation. Remove after beta.
         readStreamOptions: { feedLevelIndexInfo: true },
+        // ---
         topic,
         type
       });
