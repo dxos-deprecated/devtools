@@ -20,7 +20,7 @@ import YesIcon from '@material-ui/icons/CheckCircleOutline';
 import NoIcon from '@material-ui/icons/RadioButtonUnchecked';
 import LinkIcon from '@material-ui/icons/Link';
 
-import { keyTypeName } from '@dxos/credentials';
+import { keyTypeName } from '@dxos/credentials/dist/es/keys/keytype';
 import { truncateString } from '@dxos/debug';
 
 // TODO(burdon): Move to dxos/react-ux.

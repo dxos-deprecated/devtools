@@ -18,7 +18,7 @@ import TableRow from '@material-ui/core/TableRow';
 import blue from '@material-ui/core/colors/blue';
 
 import { truncateString } from '@dxos/debug';
-import { JsonTreeView } from '@dxos/react-ux';
+import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
 const colorHash = new ColorHash({ saturation: 1 });
 
