@@ -6,6 +6,13 @@
 
 DXOS devtools
 
+
+### References
+
+- Anatomy of an extension: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension#Background_pages
+- This package is loosely based on the [Apollo DevTools](https://github.com/apollographql/apollo-client-devtools).
+
+
 ## Install
 
 1. Clone this repo then install dependencies and build:
@@ -45,4 +52,4 @@ PRs accepted.
 
 ## License
 
-GPL-3.0 © dxos
+GPL-3.0 © DXOS.org

@@ -1,6 +1,7 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org.
 //
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
@@ -12,11 +13,11 @@ module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
-    hook: `${__dirname}/src/hook.js`,
-    devtools: `${__dirname}/src/devtools/index.js`,
+    'hook': `${__dirname}/src/hook.js`,
+    'devtools': `${__dirname}/src/devtools/index.js`,
     'main-panel': `${__dirname}/src/main-panel/index.js`,
     'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
-    background: `${__dirname}/src/background.js`,
+    'background': `${__dirname}/src/background.js`,
     'content-script': `${__dirname}/src/content-script.js`
   },
 
@@ -31,6 +32,7 @@ module.exports = {
       openAnalyzer: false
     }),
 
+    // https://github.com/rubenspgcavalcante/webpack-extension-reloader
     new ExtensionReloader({
       manifest: path.resolve(__dirname, 'src', 'manifest.json')
     }),
@@ -42,16 +44,18 @@ module.exports = {
       template: 'src/devtools/template.html'
     }),
     new HtmlWebPackPlugin({
-      title: 'DxOS',
+      title: 'DXOS',
       chunks: ['main-panel'],
       filename: 'main-panel.html',
       template: 'src/main-panel/template.html'
     }),
     new CopyWebPackPlugin({
       patterns: [
+        'assets/**',
         'src/manifest.json'
       ]
     }),
+
     // To strip all locales except “en”
     new MomentLocalesPlugin()
   ],

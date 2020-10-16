@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org.
 //
 
 /* global chrome */
@@ -38,7 +38,7 @@ function createPanel () {
 chrome.devtools.network.onNavigated.addListener(createPanel);
 
 // Attempt to create panel once per second in case
-// DxOS is loaded after page load
+// DXOS is loaded after page load
 const loadCheckInterval = setInterval(createPanel, 1000);
 
 // Start the first attempt immediately
