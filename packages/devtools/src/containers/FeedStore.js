@@ -19,9 +19,7 @@ import { truncateString } from '@dxos/debug';
 import { useBridge } from '../Provider';
 
 const useStyles = makeStyles(() => ({
-  table: {
-    tableLayout: 'fixed'
-  },
+  table: {},
 
   colOpen: {
     width: 100
@@ -35,7 +33,7 @@ const useStyles = makeStyles(() => ({
 
   mono: {
     fontFamily: 'monospace',
-    fontSize: 'large'
+    fontSize: 'medium'
   }
 }));
 
@@ -56,7 +54,7 @@ const FeedStore = () => {
     return (
       <TableRow key={path}>
         <TableCell>
-          <Switch disabled checked={opened} />
+          <Switch disabled size='small' checked={opened} />
         </TableCell>
         <TableCell>
           <Typography title={path} className={classes.mono}>
