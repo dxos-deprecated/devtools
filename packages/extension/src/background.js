@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DXOS.org.
+// Copyright 2020 DXOS.org
 //
 
 // THIS IS REQUIRED FOR BRIDGE TO WORK!!!!!

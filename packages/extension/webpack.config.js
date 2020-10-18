@@ -1,6 +1,8 @@
 //
-// Copyright 2020 DXOS.org.
+// Copyright 2020 DXOS.org
 //
+
+/* eslint-disable quote-props */
 
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
@@ -49,6 +51,13 @@ module.exports = {
       filename: 'main-panel.html',
       template: 'src/main-panel/template.html'
     }),
+    new HtmlWebPackPlugin({
+      title: 'DXOS',
+      chunks: ['popup'],
+      filename: 'popup.html',
+      template: 'src/popup/template.html'
+    }),
+
     new CopyWebPackPlugin({
       patterns: [
         'assets/**',

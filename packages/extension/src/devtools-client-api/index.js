@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DXOS.org.
+// Copyright 2020 DXOS.org
 //
 
 import Bridge from 'crx-bridge';
