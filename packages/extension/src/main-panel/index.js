@@ -5,6 +5,7 @@
 /* global chrome */
 
 import { initDevTool } from '@dxos/devtools';
+
 import BridgeProxy from './bridge';
 
 const { tabId } = chrome.devtools.inspectedWindow;

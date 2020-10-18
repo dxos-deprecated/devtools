@@ -15,7 +15,7 @@ function createPanel () {
   chrome.devtools.inspectedWindow.eval(
     '!!(window.__DXOS__);',
     (result, isException) => {
-      // TODO(elmasse) how should we better handle this error?
+      // TODO(elmasse) How should we better handle this error?
       if (isException) console.log('DXOS devtools', isException);
 
       // already created or no client

@@ -12,6 +12,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
+import ConfigIcon from '@material-ui/icons/Settings';
 import MetricsIcon from '@material-ui/icons/BugReport';
 import EventsIcon from '@material-ui/icons/Timer';
 import StorageIcon from '@material-ui/icons/Dns';
@@ -57,6 +58,11 @@ const items = [
   {
     title: 'Application',
     items: [
+      {
+        id: 'config',
+        title: 'Config',
+        icon: ConfigIcon
+      },
       {
         id: 'metrics.values',
         title: 'Metrics',
@@ -152,6 +158,13 @@ const App = () => {
 
       {/* Display hidden so that components maintain state. */}
 
+      <div className={className('config')}>
+        {/* TODO(burdon): Get config. */}
+        <JsonTreeView
+          size='small'
+          depth={4}
+        />
+      </div>
       <div className={className('metrics.values')}>
         <JsonTreeView
           size='small'
@@ -168,6 +181,7 @@ const App = () => {
       </div>
       <div className={className('storage')}>
         <div>
+          {/* TODO(burdon): Call client destroy method. */}
           <button>RESET</button>
         </div>
       </div>
@@ -181,7 +195,8 @@ const App = () => {
         <FeedViewer />
       </div>
       <div className={className('mesh.swarm')}>
-        <div>SHOW CONNECTIONS</div>
+        {/* TODO(burdon): Any presence information? */}
+        <div>SWARM CONNECTIONS</div>
       </div>
     </div>
   );

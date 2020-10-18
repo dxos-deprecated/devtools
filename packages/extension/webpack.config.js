@@ -15,12 +15,13 @@ module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
-    'hook': `${__dirname}/src/hook.js`,
-    'devtools': `${__dirname}/src/devtools/index.js`,
-    'main-panel': `${__dirname}/src/main-panel/index.js`,
-    'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
     'background': `${__dirname}/src/background.js`,
-    'content-script': `${__dirname}/src/content-script.js`
+    'content-script': `${__dirname}/src/content-script.js`,
+    'devtools': `${__dirname}/src/devtools/index.js`,
+    'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
+    'hook': `${__dirname}/src/hook.js`,
+    'main-panel': `${__dirname}/src/main-panel/index.js`,
+    'popup': `${__dirname}/src/popup/index.js`
   },
 
   output: {
@@ -39,6 +40,7 @@ module.exports = {
       manifest: path.resolve(__dirname, 'src', 'manifest.json')
     }),
 
+    // https://webpack.js.org/plugins/html-webpack-plugin/
     new HtmlWebPackPlugin({
       title: 'Devtools',
       chunks: ['devtools'],

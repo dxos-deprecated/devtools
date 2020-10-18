@@ -3,6 +3,7 @@
 //
 
 import Bridge from 'crx-bridge';
+
 import { initDevToolClientApi } from './handlers';
 
 Bridge.setNamespace('dxos.devtools');
