@@ -1,12 +1,12 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useBridge } from '../Provider';
+import { useBridge } from '../hooks/bridge';
 import AutocompleteFilter from '../components/AutocompleteFilter';
 import Feed from '../components/Feed';
 
@@ -78,8 +78,8 @@ const FeedViewer = () => {
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
-        <AutocompleteFilter label='Topic' types={topics} onChange={onTopicChange} value={topic} />
-        <AutocompleteFilter label='Message Type' types={types} onChange={onTypeChange} value={type} />
+        <AutocompleteFilter label='Topic' options={topics} onChange={onTopicChange} value={topic} />
+        <AutocompleteFilter label='Message Type' options={types} onChange={onTypeChange} value={type} />
       </div>
 
       <div className={classes.feed}>

@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 /* global chrome */
@@ -15,7 +15,7 @@ function createPanel () {
   chrome.devtools.inspectedWindow.eval(
     '!!(window.__DXOS__);',
     (result, isException) => {
-      // TODO(elmasse) how should we better handle this error?
+      // TODO(elmasse) How should we better handle this error?
       if (isException) console.log('DXOS devtools', isException);
 
       // already created or no client
@@ -38,7 +38,7 @@ function createPanel () {
 chrome.devtools.network.onNavigated.addListener(createPanel);
 
 // Attempt to create panel once per second in case
-// DxOS is loaded after page load
+// DXOS is loaded after page load
 const loadCheckInterval = setInterval(createPanel, 1000);
 
 // Start the first attempt immediately

@@ -1,10 +1,11 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 /* global chrome */
 
 import { initDevTool } from '@dxos/devtools';
+
 import BridgeProxy from './bridge';
 
 const { tabId } = chrome.devtools.inspectedWindow;
@@ -18,6 +19,7 @@ function injectScript (scriptName, cb) {
       script.parentNode.removeChild(script);
     })()
   `;
+
   chrome.devtools.inspectedWindow.eval(src, (res, err) => {
     if (err) console.log(err);
     cb(res);

@@ -1,6 +1,9 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
+
+/* eslint-disable quote-props */
+
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
@@ -12,12 +15,12 @@ module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
-    hook: `${__dirname}/src/hook.js`,
-    devtools: `${__dirname}/src/devtools/index.js`,
-    'main-panel': `${__dirname}/src/main-panel/index.js`,
+    'background': `${__dirname}/src/background/index.js`,
+    'content-script': `${__dirname}/src/content-script/index.js`,
+    'devtools': `${__dirname}/src/devtools/index.js`,
     'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
-    background: `${__dirname}/src/background.js`,
-    'content-script': `${__dirname}/src/content-script.js`
+    'main-panel': `${__dirname}/src/main-panel/index.js`,
+    'popup': `${__dirname}/src/popup/index.js`
   },
 
   output: {
@@ -31,10 +34,12 @@ module.exports = {
       openAnalyzer: false
     }),
 
+    // https://github.com/rubenspgcavalcante/webpack-extension-reloader
     new ExtensionReloader({
       manifest: path.resolve(__dirname, 'src', 'manifest.json')
     }),
 
+    // https://webpack.js.org/plugins/html-webpack-plugin/
     new HtmlWebPackPlugin({
       title: 'Devtools',
       chunks: ['devtools'],
@@ -42,17 +47,26 @@ module.exports = {
       template: 'src/devtools/template.html'
     }),
     new HtmlWebPackPlugin({
-      title: 'DxOS',
+      title: 'DXOS',
       chunks: ['main-panel'],
       filename: 'main-panel.html',
       template: 'src/main-panel/template.html'
     }),
+    new HtmlWebPackPlugin({
+      title: 'DXOS',
+      chunks: ['popup'],
+      filename: 'popup.html',
+      template: 'src/popup/template.html'
+    }),
+
     new CopyWebPackPlugin({
       patterns: [
+        'assets/**',
         'src/manifest.json'
       ]
     }),
-    // To strip all locales except “en”
+
+    // To strip all locales except “en”.
     new MomentLocalesPlugin()
   ],
 

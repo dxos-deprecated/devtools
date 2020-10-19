@@ -1,12 +1,12 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useBridge } from '../Provider';
+import { useBridge } from '../hooks/bridge';
 import AutocompleteFilter from '../components/AutocompleteFilter';
 import KeyTable from '../components/KeyTable';
 
@@ -34,13 +34,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Keys = () => {
+  const classes = useStyles();
   const [bridge] = useBridge();
   const [topics, setTopics] = useState([]);
   const [topic, setTopic] = useState();
   const [keys, setKeys] = useState([]);
 
   useEffect(() => {
-    bridge.send('topics').then(topics => setTopics(topics));
+    bridge.send('topics').then(topics => {
+      // TODO(burdon): Returns array of null objects.
+      setTopics(topics);
+    });
 
     if (topic) {
       bridge.send('party.keys', { topic }).then(keys => setKeys(keys));
@@ -52,12 +56,11 @@ const Keys = () => {
   const onTopicChange = (value) => {
     setTopic(value);
   };
-  const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
-        <AutocompleteFilter label='Topic' types={topics} onChange={onTopicChange} value={topic} />
+        <AutocompleteFilter label='Topic' options={topics} onChange={onTopicChange} value={topic} />
       </div>
       <div className={classes.keys}>
         <KeyTable keys={keys} />

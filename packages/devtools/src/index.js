@@ -1,6 +1,5 @@
-
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React from 'react';
@@ -8,18 +7,16 @@ import ReactDOM from 'react-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Provider from './Provider';
 import App from './App';
+import Provider from './Provider';
 
 const theme = createMuiTheme({
   typography: {
     fontSize: 10
   },
   props: {
-    // Name of the component ⚛️
     MuiButtonBase: {
-      // The properties to apply
-      disableRipple: true // No more ripple, on the whole application 💣!
+      disableRipple: true
     }
   }
 });

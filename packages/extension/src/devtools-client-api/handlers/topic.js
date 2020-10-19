@@ -1,12 +1,12 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('topics', () => {
     return hook.client.feedStore
       .getDescriptors()
-      .filter(d => d.opened)
+      .filter(descriptor => descriptor.opened)
       .map(({ metadata }) => metadata.topic);
   });
 };

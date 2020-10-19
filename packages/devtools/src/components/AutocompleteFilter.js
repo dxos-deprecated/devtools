@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React from 'react';
@@ -15,8 +15,9 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const AutocompleteFilter = ({ label, types = [], onChange, value = null }) => {
+const AutocompleteFilter = ({ label, onChange, value = null, options = [] }) => {
   const classes = useStyles();
+
   return (
     <Autocomplete
       className={classes.input}
@@ -24,15 +25,16 @@ const AutocompleteFilter = ({ label, types = [], onChange, value = null }) => {
       freeSolo
       autoComplete
       clearOnEscape
-      value={value} // make default to null, see https://github.com/mui-org/material-ui/issues/18173#issuecomment-552420187
-      onChange={(e, newValue) => {
+      value={value} // Make default to null, see https://github.com/mui-org/material-ui/issues/18173#issuecomment-552420187
+      options={options}
+      getOptionLabel={option => option.title}
+      onChange={(ev, newValue) => {
         if (newValue && newValue.inputValue) {
           onChange(newValue.inputValue);
         } else {
           onChange(newValue);
         }
       }}
-      options={types}
       renderInput={params => (
         <TextField {...params} label={label} variant='outlined' fullWidth />
       )}

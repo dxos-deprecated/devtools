@@ -24,7 +24,7 @@ gen/
 # OS/X
 .DS_Store
 
-# DxOS
+# DXOS
 service.yml
 
 # TODO(burdon): Remove (move to gen/)
@@ -39,3 +39,5 @@ version.json
 *.log*
 
 .vscode
+.idea
+

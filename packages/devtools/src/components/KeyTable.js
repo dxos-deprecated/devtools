@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React from 'react';
@@ -11,10 +11,10 @@ import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import TableBody from '@material-ui/core/TableBody';
 
 import YesIcon from '@material-ui/icons/CheckCircleOutline';
 import NoIcon from '@material-ui/icons/RadioButtonUnchecked';
@@ -35,7 +35,6 @@ const BooleanIcon = ({ yes = false, error = false }) => {
 
 const useStyle = makeStyles(() => ({
   table: {
-    tableLayout: 'fixed',
     '& .MuiTableCell-root': {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -49,7 +48,7 @@ const useStyle = makeStyles(() => ({
 
   mono: {
     fontFamily: 'monospace',
-    fontSize: 'large'
+    fontSize: 'medium'
   },
 
   colType: {
@@ -57,12 +56,6 @@ const useStyle = makeStyles(() => ({
   },
   colAdded: {
     width: 180
-  },
-  colOwn: {
-    width: 80
-  },
-  colTrusted: {
-    width: 80
   }
 }));
 
@@ -78,8 +71,8 @@ const KeyTable = ({ keys }) => {
           <TableCell className={classes.colType}>Type</TableCell>
           <TableCell className={classes.colKey}>Public Key</TableCell>
           <TableCell className={classes.colAdded}>Added</TableCell>
-          <TableCell className={classes.colOwn}>Ours</TableCell>
-          <TableCell className={classes.colTrusted}>Trust</TableCell>
+          <TableCell>Ours</TableCell>
+          <TableCell>Trust</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -90,7 +83,7 @@ const KeyTable = ({ keys }) => {
             <TableRow key={key}>
               <TableCell>{keyTypeName(type)}</TableCell>
               <TableCell className={classes.mono} title={key}>
-                {truncateString(key, 16)}
+                {truncateString(key, 8)}
                 <CopyToClipboard text={key} onCopy={value => console.log(value)}>
                   <IconButton
                     color='inherit'

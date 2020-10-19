@@ -1,5 +1,5 @@
 //
-// Copyright 2020 DxOS.
+// Copyright 2020 DXOS.org
 //
 
 import React, { useState, useEffect } from 'react';
@@ -16,12 +16,10 @@ import Typography from '@material-ui/core/Typography';
 
 import { truncateString } from '@dxos/debug';
 
-import { useBridge } from '../Provider';
+import { useBridge } from '../hooks/bridge';
 
 const useStyles = makeStyles(() => ({
-  table: {
-    tableLayout: 'fixed'
-  },
+  table: {},
 
   colOpen: {
     width: 100
@@ -35,7 +33,7 @@ const useStyles = makeStyles(() => ({
 
   mono: {
     fontFamily: 'monospace',
-    fontSize: 'large'
+    fontSize: 'medium'
   }
 }));
 
@@ -56,7 +54,7 @@ const FeedStore = () => {
     return (
       <TableRow key={path}>
         <TableCell>
-          <Switch disabled checked={opened} />
+          <Switch disabled size='small' checked={opened} />
         </TableCell>
         <TableCell>
           <Typography title={path} className={classes.mono}>
