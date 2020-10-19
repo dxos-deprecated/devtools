@@ -6,7 +6,7 @@ export default ({ hook, bridge }) => {
   bridge.onMessage('topics', () => {
     return hook.client.feedStore
       .getDescriptors()
-      .filter(d => d.opened)
+      .filter(descriptor => descriptor.opened)
       .map(({ metadata }) => metadata.topic);
   });
 };

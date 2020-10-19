@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import * as colors from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -180,9 +181,12 @@ const App = () => {
         />
       </div>
       <div className={className('storage')}>
-        <div>
-          {/* TODO(burdon): Call client destroy method. */}
-          <button>RESET</button>
+        <div style={{ padding: 8 }}>
+          <Button variant='outlined' size='small' onClick={() => {
+            if (window.confirm('RESET ALL DATA (CANNOT BE UNDONE)?')) {
+              // TODO(burdon): Call client destroy method.
+            }
+          }}>RESET</Button>
         </div>
       </div>
       <div className={className('halo.keyring')}>
