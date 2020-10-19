@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import * as colors from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -27,6 +26,7 @@ import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import Keys from './containers/Keys';
+import StorageTab from './containers/StorageTab';
 import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({
@@ -181,13 +181,7 @@ const App = () => {
         />
       </div>
       <div className={className('storage')}>
-        <div style={{ padding: 8 }}>
-          <Button variant='outlined' size='small' onClick={() => {
-            if (window.confirm('RESET ALL DATA (CANNOT BE UNDONE)?')) {
-              // TODO(burdon): Call client destroy method.
-            }
-          }}>RESET</Button>
-        </div>
+        <StorageTab />
       </div>
       <div className={className('halo.keyring')}>
         <Keys />
