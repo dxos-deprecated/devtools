@@ -3,8 +3,8 @@
 //
 
 export default ({ hook, bridge }) => {
-  bridge.onMessage('storage.reset', () => {
-    hook.client.reset();
+  bridge.onMessage('storage.reset', async () => {
+    await hook.client.reset();
     window.location.reload();
   });
 };
