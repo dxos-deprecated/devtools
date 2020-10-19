@@ -1,4 +1,4 @@
-import { humanize } from '@doxs/crypto';
+import { humanize } from '@dxos/crypto';
 
 //
 // Copyright 2020 DXOS.org
