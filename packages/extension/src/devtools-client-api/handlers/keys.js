@@ -11,7 +11,6 @@ export default ({ hook, bridge }) => {
     const party = partyManager._parties.get(topic);
 
     const partyKeys = new Map();
-
     partyKeys.set(party.publicKey.toString('hex'), keyring.getKey(party.publicKey));
     party.memberKeys.forEach(key => partyKeys.set(key.toString('hex'), keyring.getKey(key)));
     party.memberFeeds.forEach(key => partyKeys.set(key.toString('hex'), keyring.getKey(key)));

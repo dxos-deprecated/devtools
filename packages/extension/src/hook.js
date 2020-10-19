@@ -2,18 +2,24 @@
 // Copyright 2020 DXOS.org
 //
 
-// Executes in inspectedWindow
-
+/**
+ * Called by the content script that executes in the inspectedWindow.
+ * @param window
+ */
 export const installHook = window => {
-  const createGlobal = () => {
+  const checkForClient = () => {
     if (window.__DXOS__) {
-      clearInterval(loadCheckInterval);
+      clearInterval(checkForClientInterval);
 
+      // TODO(burdon): Rename __DXOS_CLIENT___ (get config, metrics from client).
+      // Global object set by SDK in debug mode.
       const { client, metrics } = window.__DXOS__;
 
       window.__DXOS_GLOBAL_HOOK__ = {
         client,
         metrics,
+
+        // TODO(burdon): Why is this exposed?
         async createModel (modelType, options) {
           return client.modelFactory.createModel(modelType, options);
         }
@@ -21,7 +27,13 @@ export const installHook = window => {
     }
   };
 
-  const loadCheckInterval = setInterval(createGlobal, 1000);
+  // Keep checking until client loads.
+  const checkForClientInterval = setInterval(checkForClient, 500);
 
-  createGlobal();
+  // Stop interval after.
+  setTimeout(() => {
+    clearInterval(checkForClientInterval);
+  }, 5000);
+
+  checkForClient();
 };

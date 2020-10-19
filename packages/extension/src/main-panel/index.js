@@ -19,6 +19,7 @@ function injectScript (scriptName, cb) {
       script.parentNode.removeChild(script);
     })()
   `;
+
   chrome.devtools.inspectedWindow.eval(src, (res, err) => {
     if (err) console.log(err);
     cb(res);

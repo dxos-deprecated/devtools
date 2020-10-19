@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { truncateString } from '@dxos/debug';
 
-import { useBridge } from '../Provider';
+import { useBridge } from '../hooks/bridge';
 
 const useStyles = makeStyles(() => ({
   table: {},

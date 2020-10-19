@@ -26,7 +26,7 @@ import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import Keys from './containers/Keys';
-import { useMetrics } from './metrics';
+import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({
   root: {

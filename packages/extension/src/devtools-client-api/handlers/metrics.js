@@ -16,7 +16,8 @@ export default ({ hook, bridge }) => {
   bridge.onMessage('metrics.subscribe', ({ sender }) => {
     const metricsHandler = onMetrics(sender.name);
     const handlerOff = hook.metrics.on(null, metricsHandler);
-    // send first grab of metrics right away
+
+    // Send first grab of metrics right away.
     metricsHandler();
 
     const listenerKey = Date.now();

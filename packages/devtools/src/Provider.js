@@ -2,11 +2,11 @@
 // Copyright 2020 DXOS.org
 //
 
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const Context = React.createContext({});
 
-export default function Provider ({ bridge, children }) {
+const Provider = ({ bridge, children }) => {
   const [initialized, setInitialized] = useState(false);
   const [ready, setReady] = useState(false);
 
@@ -22,19 +22,18 @@ export default function Provider ({ bridge, children }) {
       {!initialized && (
         <div style={{ padding: 8 }}>Waiting for DXOS client...</div>
       )}
+
       {ready && (
         <Context.Provider value={{ bridge }}>
           {children}
         </Context.Provider>
       )}
+
       {(!ready && initialized) && (
         <div>DXOS client not found.</div>
       )}
     </>
   );
-}
-
-export const useBridge = () => {
-  const { bridge } = useContext(Context);
-  return [bridge];
 };
+
+export default Provider;

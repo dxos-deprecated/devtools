@@ -15,11 +15,10 @@ module.exports = {
   devtool: 'eval-source-map',
 
   entry: {
-    'background': `${__dirname}/src/background.js`,
-    'content-script': `${__dirname}/src/content-script.js`,
+    'background': `${__dirname}/src/background/index.js`,
+    'content-script': `${__dirname}/src/content-script/index.js`,
     'devtools': `${__dirname}/src/devtools/index.js`,
     'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
-    'hook': `${__dirname}/src/hook.js`,
     'main-panel': `${__dirname}/src/main-panel/index.js`,
     'popup': `${__dirname}/src/popup/index.js`
   },
@@ -67,7 +66,7 @@ module.exports = {
       ]
     }),
 
-    // To strip all locales except “en”
+    // To strip all locales except “en”.
     new MomentLocalesPlugin()
   ],
 

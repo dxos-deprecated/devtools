@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { useBridge } from './Provider';
+import { useBridge } from './bridge';
 
 export const useMetrics = () => {
   const [bridge] = useBridge();
