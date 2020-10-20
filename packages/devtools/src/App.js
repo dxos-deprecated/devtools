@@ -20,6 +20,7 @@ import KeyIcon from '@material-ui/icons/VpnKey';
 import StoreIcon from '@material-ui/icons/Storage';
 import FeedIcon from '@material-ui/icons/PageView';
 import SwarmIcon from '@material-ui/icons/Router';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
 
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
@@ -27,6 +28,8 @@ import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import Keys from './containers/Keys';
 import StorageTab from './containers/StorageTab';
+import ItemsViewer from './containers/ItemsViewer';
+
 import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({
@@ -103,6 +106,11 @@ const items = [
         id: 'echo.feedview',
         title: 'Feed View',
         icon: FeedIcon
+      },
+      {
+        id: 'echo.items',
+        title: 'Items',
+        icon: AccountTreeIcon
       }
     ]
   },
@@ -191,6 +199,9 @@ const App = () => {
       </div>
       <div className={className('echo.feedview')}>
         <FeedViewer />
+      </div>
+      <div className={className('echo.items')}>
+        <ItemsViewer />
       </div>
       <div className={className('mesh.swarm')}>
         {/* TODO(burdon): Any presence information? */}
