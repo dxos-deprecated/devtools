@@ -7,9 +7,10 @@
 ## Instalation
 
 1. Grab an artifact from the latest CI run on master: click on the status icon > details > artifacts dropdown on top-right.
-2. Unzip the downloaded archive.
-3. Open extensions panel in Chrome (Menu > More Tools > Extensions).
-4. Drag&drop the extracted crx file onto the extensions panel.
+1. Unzip the downloaded archive.
+1. Open extensions panel in Chrome (Menu > More Tools > Extensions).
+1. Make sure to remove all old versions of DXOS devtools before installing, otherwise you would have a duplicate extension.
+1. Drag&drop the extracted crx file onto the extensions panel.
 
 ## Contributing
 
