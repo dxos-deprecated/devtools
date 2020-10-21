@@ -4,11 +4,9 @@
 
 /* eslint-disable quote-props */
 
-const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const ExtensionReloader = require('webpack-extension-reloader');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -28,11 +26,6 @@ module.exports = {
   },
 
   plugins: [
-    // https://github.com/rubenspgcavalcante/webpack-extension-reloader
-    new ExtensionReloader({
-      manifest: path.resolve(__dirname, 'src', 'manifest.json')
-    }),
-
     // https://webpack.js.org/plugins/html-webpack-plugin/
     new HtmlWebPackPlugin({
       title: 'Devtools',
