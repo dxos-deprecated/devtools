@@ -18,7 +18,7 @@ import EventsIcon from '@material-ui/icons/Timer';
 import StorageIcon from '@material-ui/icons/Dns';
 import KeyIcon from '@material-ui/icons/VpnKey';
 import StoreIcon from '@material-ui/icons/Storage';
-import FeedIcon from '@material-ui/icons/PageView';
+import FeedIcon from '@material-ui/icons/Pageview';
 import SwarmIcon from '@material-ui/icons/Router';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
 
