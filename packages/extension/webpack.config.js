@@ -9,7 +9,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const ExtensionReloader = require('webpack-extension-reloader');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -29,11 +28,6 @@ module.exports = {
   },
 
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false
-    }),
-
     // https://github.com/rubenspgcavalcante/webpack-extension-reloader
     new ExtensionReloader({
       manifest: path.resolve(__dirname, 'src', 'manifest.json')
