@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: yarn install --frozen-lockfile
+    - run: yarn install
     - run: yarn lint
     - run: echo "console.log(require.resolve('@material-ui/icons/PageView'))" | node
     - run: yarn build
