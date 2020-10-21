@@ -24,3 +24,9 @@ jobs:
     - run: yarn lint
     - run: yarn build
     - run: yarn test
+    - run: cd packages/extension
+    - run: yarn pack:crx
+    - uses: actions/upload-artifact@v2
+      with:
+        name: dxos-devtools
+        path: dxos-devtools.crx
