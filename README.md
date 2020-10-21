@@ -6,7 +6,7 @@
 
 ## Instalation
 
-1. Grab an artifact from the latest CI run on master.
+1. Grab an artifact from the latest CI run on master: click on the status icon > details > artifacts dropdown on top-right.
 2. Unzip the downloaded archive.
 3. Open extensions panel in Chrome (Menu > More Tools > Extensions).
 4. Drag&drop the extracted crx file onto the extensions panel.
