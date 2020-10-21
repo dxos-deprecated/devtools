@@ -21,7 +21,7 @@
     "build": "wsrun -t build",
     "lint": "wsrun lint",
     "test": "wsrun test",
-    "postinstall": "test $(whoami) '==' 'dmaretskyi' && rm .git/hooks/pre-commit"
+    "postinstall": "test $(whoami) = 'dmaretskyi' && rm .git/hooks/pre-commit"
   },
   "husky": {
     "hooks": {
