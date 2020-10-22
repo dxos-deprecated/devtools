@@ -4,15 +4,15 @@
 
 import React, { useState, useEffect } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Table from '@material-ui/core/Table';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { truncateString } from '@dxos/debug';
 
@@ -43,11 +43,10 @@ const FeedStore = () => {
 
   useEffect(() => {
     (async () => setFeedDescriptors(await bridge.send('feedstore.descriptors')))();
-  });
+  }, []);
 
   const classes = useStyles();
 
-  // const descriptors = client.feedStore.getDescriptors().map(descriptor => {
   const descriptors = feedDescriptors.map(descriptor => {
     const { path, opened, metadata, blocks } = descriptor;
 

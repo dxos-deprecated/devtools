@@ -6,9 +6,9 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useBridge } from '../hooks/bridge';
 import AutocompleteFilter from '../components/AutocompleteFilter';
 import KeyTable from '../components/KeyTable';
+import { useBridge } from '../hooks/bridge';
 
 const useStyles = makeStyles(theme => ({
   root: {

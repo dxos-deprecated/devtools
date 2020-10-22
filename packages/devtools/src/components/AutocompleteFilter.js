@@ -4,8 +4,8 @@
 
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 const useStyles = makeStyles(() => ({
@@ -27,7 +27,7 @@ const AutocompleteFilter = ({ label, onChange, value = null, options = [] }) => 
       clearOnEscape
       value={value} // Make default to null, see https://github.com/mui-org/material-ui/issues/18173#issuecomment-552420187
       options={options}
-      getOptionLabel={option => option.title}
+      getOptionLabel={option => option}
       onChange={(ev, newValue) => {
         if (newValue && newValue.inputValue) {
           onChange(newValue.inputValue);

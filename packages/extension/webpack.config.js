@@ -4,6 +4,7 @@
 
 /* eslint-disable quote-props */
 
+const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebPackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
@@ -61,14 +62,19 @@ module.exports = {
     fs: 'empty'
   },
 
+  resolve: {
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+
   module: {
     rules: [
       // js
       {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
+        test: /\.[jt]sx?$/,
+        include: path.resolve(__dirname, './src'),
+        exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
+          loader: 'ts-loader'
         }
       },
 

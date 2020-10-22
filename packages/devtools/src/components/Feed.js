@@ -2,20 +2,20 @@
 // Copyright 2020 DXOS.org
 //
 
-import React, { useState } from 'react';
 import clsx from 'clsx';
 import ColorHash from 'color-hash';
+import React, { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
 import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import blue from '@material-ui/core/colors/blue';
+import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { truncateString } from '@dxos/debug';
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
@@ -44,7 +44,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const color = (type) => {
-  return type.indexOf('dxos') !== -1 ? red[500] : blue[500];
+  return type === 'halo' ? red[500] : blue[500];
 };
 
 const Feed = ({ messages, onSelect }) => {
@@ -71,14 +71,13 @@ const Feed = ({ messages, onSelect }) => {
           {
             // Messages with feed metadata.
             messages.map(({ key, seq, data }) => {
-              const { timestamp, __type_url: type, ...rest } = data;
-
               const feedKey = key;
 
               const rowKey = `key-${feedKey}-${seq}`;
+              const type = data.echo !== undefined ? 'echo' : 'halo';
 
               return (
-                <TableRow key={rowKey} size='small' className={clsx({ [classes.system]: type.indexOf('dxos') !== -1 })}>
+                <TableRow key={rowKey} size='small' className={clsx({ [classes.system]: type === 'halo' })}>
                   {/* Feed */}
                   <TableCell
                     className={clsx(classes.outerCell, classes.meta)}
@@ -95,7 +94,7 @@ const Feed = ({ messages, onSelect }) => {
                   <TableCell className={classes.outerCell}>
                     <Link
                       style={{ color: color(type), cursor: 'pointer' }}
-                      onClick={() => onSelect(data, type)}
+                      onClick={() => onSelect(data)}
                     >
                       {type}
                     </Link>
@@ -108,7 +107,7 @@ const Feed = ({ messages, onSelect }) => {
                       size='small'
                       root='data'
                       depth={0}
-                      data={expanded[rowKey] ? rest : { dummy: undefined }}
+                      data={expanded[rowKey] ? data : { dummy: undefined }}
                       onSelect={() => handleExpand(rowKey)}
                     />
                   </TableCell>

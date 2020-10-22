@@ -5,32 +5,21 @@
 const feedListeners = new Map();
 
 export default ({ hook, bridge }) => {
-  const messagesHandler = senderName => model => {
-    const data = model ? [
-      ...model.messages
-        .map(({ key, seq, data }) => ({ key: key.toString('hex'), seq, data }))]
-      : [];
-    bridge.sendMessage('feed.data', data, senderName);
-  };
+  bridge.onMessage('feed.subscribe', async ({ sender, data: { topic } }) => {
+    // const handler = messagesHandler(sender.name);
 
-  bridge.onMessage('feed.subscribe', async ({ sender, data: { topic, type = '' } }) => {
-    const handler = messagesHandler(sender.name);
+    const feedMessages = [];
 
-    const model = await hook.client.modelFactory
-      .createModel(undefined, {
-        subscriptionOptions: { feedLevelIndexInfo: true },
-        topic,
-        type
+    const feedDescriptors = hook.client.feedStore.getDescriptors().filter(d => d.metadata.partyKey.toString('hex') === topic);
+    feedDescriptors.forEach(feedDescriptor => {
+      const stream = feedDescriptor.feed.createReadStream({ live: true });
+      stream.on('data', (data) => {
+        feedMessages.push({ data });
+        bridge.sendMessage('feed.data', feedMessages, sender.name);
       });
-
-    model.on('update', handler);
+    });
 
     const listenerKey = Date.now();
-
-    feedListeners.set(listenerKey, () => {
-      model.off('update', handler);
-      model.destroy();
-    });
 
     return listenerKey;
   });
