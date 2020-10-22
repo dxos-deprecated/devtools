@@ -32,8 +32,7 @@ function getData(echo) {
 }
 
 export default ({ hook, bridge }) => {
-  bridge.onMessage('echo.items.subscribe', async ({ sender }) => {
-    console.log('echo.items.subscribe')
+  bridge.onOpenStreamChannge('echo.items', stream => {
     hook.client.echo.queryParties().subscribe(parties => {
       for(const party of parties) {
         party.database.queryItems().subscribe(items => {
@@ -52,7 +51,7 @@ export default ({ hook, bridge }) => {
   
         console.log('update', res)
   
-        bridge.sendMessage('echo.items.update', res, sender.name);
+        stream.send(res);
       } catch (err) {
         console.error("update error");
         console.error(err);
@@ -60,11 +59,5 @@ export default ({ hook, bridge }) => {
     }
 
     update();
-  });
-
-  // bridge.onMessage('echo.items.unsubscribe', async ({ data: { key } }) => {
-  //   if (removeListener) {
-  //     removeListener();
-  //   }
-  // });
-};
+  })
+}

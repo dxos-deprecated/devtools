@@ -7,22 +7,20 @@ export default function ItemsViewer () {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    bridge.listen('echo.items.update', ({ data }) => {
-      console.log({ data })
-      setData(data);
-    });
-
-    let listenerKey;
+    let unsubscribe;
 
     (async () => {
-      listenerKey = await bridge.send('echo.items.subscribe');
+      const stream = bridge.openStream('echo.items');
+
+      stream.onMessage(data => {
+        console.log({ data })
+        setData(data)
+      })
+
+      unsubscribe = () => stream.close();
     })();
 
-    // return () => {
-    //   if (listenerKey) {
-    //     bridge.send('echo.items.unsubscribe', { key: listenerKey });
-    //   }
-    // };
+    return () => unsubscribe?.();
   }, [bridge]);
 
   return (
