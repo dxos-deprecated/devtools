@@ -9,9 +9,9 @@ import { humanize } from '@dxos/crypto';
  * @param {ECHO} echo 
  */
 function getData(echo) {
+  // TODO(marik-d): Display items hierarchically
   const res = {};
   const parties = echo.queryParties().value;
-  console.log({ parties })
   for (const party of parties) {
     const partyInfo = {};
     res[`Party ${humanize(party.key)}`] = partyInfo;
@@ -44,20 +44,13 @@ export default ({ hook, bridge }) => {
 
     function update() {
       try {
-        console.log('update')
-        // TODO(marik-d): Display items hierarhically
-        
         const res = getData(hook.client.echo);
-  
-        console.log('update', res)
-  
         stream.send(res);
       } catch (err) {
         console.error("update error");
         console.error(err);
       }
     }
-
     update();
   })
 }
