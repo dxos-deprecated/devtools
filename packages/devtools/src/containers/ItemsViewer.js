@@ -4,8 +4,26 @@ import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
 export default function ItemsViewer () {
   const [bridge] = useBridge();
-
   const [data, setData] = useState({});
+
+  useEffect(() => {
+    bridge.listen('echo.items.data', (data) => {
+      setData(data);
+    });
+
+    let listenerKey;
+
+    (async () => {
+      listenerKey = await bridge.send('echo.items.subscribe');
+    })();
+
+    return () => {
+      if (listenerKey) {
+        bridge.send('echo.items.unsubscribe', { key: listenerKey });
+      }
+    };
+  }, [bridge]);
+  
   useEffect(() => {
     bridge.send('echo.items').then(data => setData(data));
   }, []);
