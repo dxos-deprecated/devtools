@@ -1,6 +1,12 @@
+//
+// Copyright 2020 DXOS.org
+//
+
 import React, { useEffect, useState } from 'react';
-import { useBridge } from '../hooks/bridge';
+
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
+
+import { useBridge } from '../hooks/bridge';
 
 export default function ItemsViewer () {
   const [bridge] = useBridge();
@@ -13,9 +19,9 @@ export default function ItemsViewer () {
       const stream = await bridge.openStream('echo.items');
 
       stream.onMessage(data => {
-        console.log({ data })
-        setData(data)
-      })
+        console.log({ data });
+        setData(data);
+      });
 
       unsubscribe = () => stream.close();
     })();

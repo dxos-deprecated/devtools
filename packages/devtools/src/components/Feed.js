@@ -2,20 +2,20 @@
 // Copyright 2020 DXOS.org
 //
 
-import React, { useState } from 'react';
 import clsx from 'clsx';
 import ColorHash from 'color-hash';
+import React, { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
 import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import blue from '@material-ui/core/colors/blue';
+import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { truncateString } from '@dxos/debug';
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';

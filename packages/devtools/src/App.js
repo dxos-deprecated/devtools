@@ -4,32 +4,30 @@
 
 import React, { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-import * as colors from '@material-ui/core/colors';
+import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-
-import ConfigIcon from '@material-ui/icons/Settings';
+import * as colors from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
 import MetricsIcon from '@material-ui/icons/BugReport';
-import EventsIcon from '@material-ui/icons/Timer';
 import StorageIcon from '@material-ui/icons/Dns';
-import KeyIcon from '@material-ui/icons/VpnKey';
-import StoreIcon from '@material-ui/icons/Storage';
 import FeedIcon from '@material-ui/icons/Pageview';
 import SwarmIcon from '@material-ui/icons/Router';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import ConfigIcon from '@material-ui/icons/Settings';
+import StoreIcon from '@material-ui/icons/Storage';
+import EventsIcon from '@material-ui/icons/Timer';
+import KeyIcon from '@material-ui/icons/VpnKey';
 
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
+import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
 import StorageTab from './containers/StorageTab';
-import ItemsViewer from './containers/ItemsViewer';
-
 import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({

@@ -1,5 +1,11 @@
+//
+// Copyright 2020 DXOS.org
+//
+
 import React from 'react';
+
 import Button from '@material-ui/core/Button';
+
 import { useBridge } from '../hooks/bridge';
 
 export default function StorageTab () {

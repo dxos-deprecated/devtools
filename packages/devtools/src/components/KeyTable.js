@@ -2,23 +2,22 @@
 // Copyright 2020 DXOS.org
 //
 
-import React from 'react';
 import moment from 'moment';
+import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { makeStyles } from '@material-ui/core/styles';
-import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green';
 import IconButton from '@material-ui/core/IconButton';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-
+import green from '@material-ui/core/colors/green';
+import red from '@material-ui/core/colors/red';
+import { makeStyles } from '@material-ui/core/styles';
 import YesIcon from '@material-ui/icons/CheckCircleOutline';
-import NoIcon from '@material-ui/icons/RadioButtonUnchecked';
 import LinkIcon from '@material-ui/icons/Link';
+import NoIcon from '@material-ui/icons/RadioButtonUnchecked';
 
 import { keyTypeName } from '@dxos/credentials/dist/es/keys/keytype';
 import { truncateString } from '@dxos/debug';
