@@ -2,8 +2,8 @@
 // Copyright 2020 DXOS.org
 //
 
-import EventEmitter from 'events';
 import Bridge from 'crx-bridge';
+import EventEmitter from 'events';
 
 Bridge.setNamespace('dxos.devtools');
 Bridge.allowWindowMessaging('dxos.devtools');
@@ -28,7 +28,7 @@ export default class BridgeProxy extends EventEmitter {
     return Bridge.sendMessage(message, payload, 'window');
   }
 
-  async openStream(channel) {
+  async openStream (channel) {
     return Bridge.openStream(channel, 'window');
   }
 

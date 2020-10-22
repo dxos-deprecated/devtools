@@ -5,7 +5,7 @@
 const feedListeners = new Map();
 
 export default ({ hook, bridge }) => {
-  bridge.onMessage('feed.subscribe', async ({ sender, data: { topic, type = '' } }) => {
+  bridge.onMessage('feed.subscribe', async ({ sender, data: { topic } }) => {
     // const handler = messagesHandler(sender.name);
 
     const feedMessages = [];

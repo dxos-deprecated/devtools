@@ -5,10 +5,10 @@ import { humanize } from '@dxos/crypto';
 //
 
 /**
- * 
- * @param {ECHO} echo 
+ *
+ * @param {ECHO} echo
  */
-function getData(echo) {
+function getData (echo) {
   // TODO(marik-d): Display items hierarchically
   const res = {};
   const parties = echo.queryParties().value;
@@ -34,23 +34,23 @@ function getData(echo) {
 export default ({ hook, bridge }) => {
   bridge.onOpenStreamChannel('echo.items', stream => {
     hook.client.echo.queryParties().subscribe(parties => {
-      for(const party of parties) {
-        party.database.queryItems().subscribe(items => {
+      for (const party of parties) {
+        party.database.queryItems().subscribe(() => {
           update();
-        })
+        });
       }
       update();
     });
 
-    function update() {
+    function update () {
       try {
         const res = getData(hook.client.echo);
         stream.send(res);
       } catch (err) {
-        console.error("update error");
+        console.error('update error');
         console.error(err);
       }
     }
     update();
-  })
-}
+  });
+};
