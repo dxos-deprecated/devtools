@@ -43,11 +43,10 @@ const FeedStore = () => {
 
   useEffect(() => {
     (async () => setFeedDescriptors(await bridge.send('feedstore.descriptors')))();
-  });
+  }, []);
 
   const classes = useStyles();
 
-  // const descriptors = client.feedStore.getDescriptors().map(descriptor => {
   const descriptors = feedDescriptors.map(descriptor => {
     const { path, opened, metadata, blocks } = descriptor;
 
