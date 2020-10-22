@@ -4,14 +4,14 @@ import { humanize } from '@dxos/crypto';
 // Copyright 2020 DXOS.org
 //
 
-const feedListeners = new Map();
-
-const getItems = (hook) => {
-  const parties = hook.client.echo.queryParties().value;
-  console.log(parties);
-
-  // TODO(marik-d): Display items hierarhically
+/**
+ * 
+ * @param {ECHO} echo 
+ */
+function getData(echo) {
   const res = {};
+  const parties = echo.queryParties().value;
+  console.log({ parties })
   for (const party of parties) {
     const partyInfo = {};
     res[`Party ${humanize(party.key)}`] = partyInfo;
@@ -29,27 +29,42 @@ const getItems = (hook) => {
   }
 
   return res;
-};
+}
 
 export default ({ hook, bridge }) => {
-  bridge.onMessage('echo.items', () => getItems(hook));
-
   bridge.onMessage('echo.items.subscribe', async ({ sender }) => {
-    const items = [];
+    console.log('echo.items.subscribe')
+    hook.client.echo.queryParties().subscribe(parties => {
+      for(const party of parties) {
+        party.database.queryItems().subscribe(items => {
+          update();
+        })
+      }
+      update();
+    });
 
-    // TODO: subscribe to items
-    // const feedDescriptors = hook.client.feedStore.
-    // and send: bridge.sendMessage('echo.items.data', items, sender.name);
-
-    const listenerKey = Date.now();
-
-    return listenerKey;
-  });
-
-  bridge.onMessage('echo.items.unsubscribe', async ({ data: { key } }) => {
-    const removeListener = feedListeners.get(key);
-    if (removeListener) {
-      removeListener();
+    function update() {
+      try {
+        console.log('update')
+        // TODO(marik-d): Display items hierarhically
+        
+        const res = getData(hook.client.echo);
+  
+        console.log('update', res)
+  
+        bridge.sendMessage('echo.items.update', res, sender.name);
+      } catch (err) {
+        console.error("update error");
+        console.error(err);
+      }
     }
+
+    update();
   });
+
+  // bridge.onMessage('echo.items.unsubscribe', async ({ data: { key } }) => {
+  //   if (removeListener) {
+  //     removeListener();
+  //   }
+  // });
 };

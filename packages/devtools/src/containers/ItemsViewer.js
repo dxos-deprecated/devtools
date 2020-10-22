@@ -7,7 +7,8 @@ export default function ItemsViewer () {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    bridge.listen('echo.items.data', (data) => {
+    bridge.listen('echo.items.update', ({ data }) => {
+      console.log({ data })
       setData(data);
     });
 
@@ -17,16 +18,12 @@ export default function ItemsViewer () {
       listenerKey = await bridge.send('echo.items.subscribe');
     })();
 
-    return () => {
-      if (listenerKey) {
-        bridge.send('echo.items.unsubscribe', { key: listenerKey });
-      }
-    };
+    // return () => {
+    //   if (listenerKey) {
+    //     bridge.send('echo.items.unsubscribe', { key: listenerKey });
+    //   }
+    // };
   }, [bridge]);
-  
-  useEffect(() => {
-    bridge.send('echo.items').then(data => setData(data));
-  }, []);
 
   return (
     <JsonTreeView
