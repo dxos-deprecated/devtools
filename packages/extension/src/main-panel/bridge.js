@@ -28,6 +28,10 @@ export default class BridgeProxy extends EventEmitter {
     return Bridge.sendMessage(message, payload, 'window');
   }
 
+  async openStream(channel) {
+    return Bridge.openStream(channel, 'window');
+  }
+
   listen (message, fn) {
     Bridge.onMessage(message, fn);
   }
