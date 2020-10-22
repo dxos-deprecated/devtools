@@ -10,7 +10,7 @@ export default function ItemsViewer () {
     let unsubscribe;
 
     (async () => {
-      const stream = bridge.openStream('echo.items');
+      const stream = await bridge.openStream('echo.items');
 
       stream.onMessage(data => {
         console.log({ data })

@@ -32,7 +32,7 @@ function getData(echo) {
 }
 
 export default ({ hook, bridge }) => {
-  bridge.onOpenStreamChannge('echo.items', stream => {
+  bridge.onOpenStreamChannel('echo.items', stream => {
     hook.client.echo.queryParties().subscribe(parties => {
       for(const party of parties) {
         party.database.queryItems().subscribe(items => {
