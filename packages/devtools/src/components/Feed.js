@@ -44,7 +44,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const color = (type) => {
-  return type.indexOf('dxos') !== -1 ? red[500] : blue[500];
+  return type === 'halo' ? red[500] : blue[500];
 };
 
 const Feed = ({ messages, onSelect }) => {
@@ -71,14 +71,13 @@ const Feed = ({ messages, onSelect }) => {
           {
             // Messages with feed metadata.
             messages.map(({ key, seq, data }) => {
-              const { timestamp, __type_url: type, ...rest } = data;
-
               const feedKey = key;
 
               const rowKey = `key-${feedKey}-${seq}`;
+              const type = data.echo !== undefined ? 'echo' : 'halo';
 
               return (
-                <TableRow key={rowKey} size='small' className={clsx({ [classes.system]: type.indexOf('dxos') !== -1 })}>
+                <TableRow key={rowKey} size='small' className={clsx({ [classes.system]: type === 'halo' })}>
                   {/* Feed */}
                   <TableCell
                     className={clsx(classes.outerCell, classes.meta)}
@@ -95,7 +94,7 @@ const Feed = ({ messages, onSelect }) => {
                   <TableCell className={classes.outerCell}>
                     <Link
                       style={{ color: color(type), cursor: 'pointer' }}
-                      onClick={() => onSelect(data, type)}
+                      onClick={() => onSelect(data)}
                     >
                       {type}
                     </Link>
@@ -108,7 +107,7 @@ const Feed = ({ messages, onSelect }) => {
                       size='small'
                       root='data'
                       depth={0}
-                      data={expanded[rowKey] ? rest : { dummy: undefined }}
+                      data={expanded[rowKey] ? data : { dummy: undefined }}
                       onSelect={() => handleExpand(rowKey)}
                     />
                   </TableCell>

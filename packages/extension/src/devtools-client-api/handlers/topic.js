@@ -7,6 +7,6 @@ export default ({ hook, bridge }) => {
     return hook.client.feedStore
       .getDescriptors()
       .filter(descriptor => descriptor.opened)
-      .map(({ metadata }) => metadata.topic);
+      .map(({ metadata }) => metadata.partyKey.toString('hex'));
   });
 };
