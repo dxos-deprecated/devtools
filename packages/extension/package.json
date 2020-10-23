@@ -6,7 +6,7 @@
   "author": "DXOS.org",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && webpack -p",
+    "build": "npm run clean && webpack --mode development",
     "build:watch": "npm run clean && webpack --mode development --watch",
     "pack:crx": "crx pack dist -o dxos-devtools.crx",
     "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
