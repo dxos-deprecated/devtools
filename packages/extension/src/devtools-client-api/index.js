@@ -20,11 +20,12 @@ const init = () => {
     return;
   }
 
-  if (window.__DXOS_GLOBAL_HOOK__ && !started) {
+  if (window.__DXOS__ && !started) {
     started = true;
 
+    console.log('[DXOS devtools] Init client API');
     initDevToolClientApi({
-      hook: window.__DXOS_GLOBAL_HOOK__,
+      hook: window.__DXOS__,
       bridge: Bridge
     });
 

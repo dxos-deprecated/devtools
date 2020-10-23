@@ -2,19 +2,17 @@
 // Copyright 2020 DXOS.org
 //
 
-/* global HTMLDocument */
-
 import Bridge from 'crx-bridge';
-
-import { installHook } from '../hook';
 
 Bridge.setNamespace('dxos.devtools');
 Bridge.allowWindowMessaging('dxos.devtools');
 
-// Inject the hook.
-if (document instanceof HTMLDocument) {
+Bridge.onMessage('extension.inject-client-script', () => {
+  console.log('[DXOS devtools] Injecting client API.');
+
   const script = document.createElement('script');
-  script.textContent = `;(${installHook.toString()})(window)`;
+  script.src = chrome.runtime.getURL('devtools-client-api.js');
   document.documentElement.appendChild(script);
-  script.parentNode.removeChild(script);
-}
+});
+
+console.log('[DXOS devtools] Content-script initialized');

@@ -24,6 +24,10 @@ export default class BridgeProxy extends EventEmitter {
     });
   }
 
+  async injectClientScript () {
+    await Bridge.sendMessage('extension.inject-client-script', {}, 'content-script');
+  }
+
   async send (message, payload = {}) {
     return Bridge.sendMessage(message, payload, 'window');
   }
