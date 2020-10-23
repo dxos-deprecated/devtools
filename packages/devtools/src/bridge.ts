@@ -1,6 +1,6 @@
 export interface Stream<T> {
   send(msg: T): void;
-  close(msg: any): void;
+  close(msg?: any): void;
   onMessage(callback: (data: T) => void): (() => void);
   onClose(callback: () => void): (() => void);
 }
@@ -11,4 +11,6 @@ export interface DevtoolsBridge {
   openStream (channel: string): Promise<Stream<any>>;
 
   listen (message: string, fn: (data: any) => void): void;
+
+  on(event: 'api', cb: (ready: boolean) => void): void;
 }

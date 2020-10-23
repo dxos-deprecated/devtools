@@ -2,11 +2,21 @@
 // Copyright 2020 DXOS.org
 //
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
+import { DevtoolsBridge } from './bridge';
 
-export const Context = React.createContext({});
+interface ContextValue {
+  bridge: DevtoolsBridge,
+}
 
-const Provider = ({ bridge, children }) => {
+export const Context = React.createContext<ContextValue | undefined>(undefined);
+
+export interface ProviderProps {
+  bridge: DevtoolsBridge
+  children?: ReactNode
+}
+
+const Provider = ({ bridge, children }: ProviderProps) => {
   const [initialized, setInitialized] = useState(false);
   const [ready, setReady] = useState(false);
 
