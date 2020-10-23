@@ -39,6 +39,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "7.9.4",
     "@dxos/eslint-plugin": "^1.0.6",
+    "@types/chrome": "^0.0.125",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.0",

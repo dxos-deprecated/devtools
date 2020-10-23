@@ -4,7 +4,7 @@
 
 /* global chrome */
 
-import { initDevTool } from '@dxos/devtools';
+import { initDevTool } from '../../../devtools/dist/src';
 
 import BridgeProxy from './bridge';
 
