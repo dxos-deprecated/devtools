@@ -17,7 +17,7 @@ module.exports = {
     'content-script': `${__dirname}/src/content-script/index.js`,
     'devtools': `${__dirname}/src/devtools/index.js`,
     'devtools-client-api': `${__dirname}/src/devtools-client-api/index.js`,
-    'main-panel': `${__dirname}/src/main-panel/index.js`,
+    'main-panel': `${__dirname}/src/main-panel/index.ts`,
     'popup': `${__dirname}/src/popup/index.js`
   },
 
@@ -73,9 +73,7 @@ module.exports = {
         test: /\.[jt]sx?$/,
         include: path.resolve(__dirname, './src'),
         exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader'
-        }
+        loader: 'ts-loader'
       },
 
       // config
