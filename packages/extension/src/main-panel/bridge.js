@@ -16,7 +16,6 @@ export default class BridgeProxy extends EventEmitter {
 
   _init () {
     Bridge.onMessage('api.ready', () => {
-      console.log('api.ready');
       this.emit('api', true);
     });
 
