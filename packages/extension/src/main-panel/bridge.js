@@ -16,12 +16,17 @@ export default class BridgeProxy extends EventEmitter {
 
   _init () {
     Bridge.onMessage('api.ready', () => {
+      console.log('api.ready');
       this.emit('api', true);
     });
 
     Bridge.onMessage('api.timeout', () => {
       this.emit('api', false);
     });
+  }
+
+  async injectClientScript () {
+    await Bridge.sendMessage('extension.inject-client-script', {}, 'content-script');
   }
 
   async send (message, payload = {}) {
