@@ -33,11 +33,16 @@ function getData (echo) {
 
 export default ({ hook, bridge }) => {
   bridge.onOpenStreamChannel('echo.items', stream => {
-    hook.client.echo.queryParties().subscribe(parties => {
+    const partySubscriptions = [];
+
+    const unsubscribe = hook.client.echo.queryParties().subscribe(parties => {
+      partySubscriptions.forEach(unsub => unsub());
+
       for (const party of parties) {
-        party.database.queryItems().subscribe(() => {
+        const sub = party.database.queryItems().subscribe(() => {
           update();
         });
+        partySubscriptions.push(sub);
       }
       update();
     });
@@ -51,6 +56,12 @@ export default ({ hook, bridge }) => {
         console.error(err);
       }
     }
+
+    stream.onClose(() => {
+      partySubscriptions.forEach(unsub => unsub());
+      unsubscribe();
+    });
+
     update();
   });
 };
