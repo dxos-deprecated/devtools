@@ -11,6 +11,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
 import Provider from './Provider';
 import { DevtoolsBridge } from './bridge';
+import { ErrorBoundary } from './components/ErrorBoundary';
 
 const theme = createMuiTheme({
   typography: {
@@ -32,12 +33,14 @@ export interface Shell {
 export const initApp = (shell: Shell) => {
   shell.connect(bridge => {
     ReactDOM.render(
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Provider bridge={bridge}>
-          <App />
-        </Provider>
-      </MuiThemeProvider>,
+      <ErrorBoundary>
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <Provider bridge={bridge}>
+            <App />
+          </Provider>
+        </MuiThemeProvider>
+      </ErrorBoundary>,
       document.getElementById('root')
     );
   });
