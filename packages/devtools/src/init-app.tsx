@@ -10,6 +10,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import App from './App';
 import Provider from './Provider';
+import { DevtoolsBridge } from './bridge';
 
 const theme = createMuiTheme({
   typography: {
@@ -22,7 +23,13 @@ const theme = createMuiTheme({
   }
 });
 
-export const initApp = (shell) => {
+export interface Shell {
+  tabId: number,
+  connect(cb: (bridge: DevtoolsBridge) => void): void;
+  onReload(cb: () => void): void;
+}
+
+export const initApp = (shell: Shell) => {
   shell.connect(bridge => {
     ReactDOM.render(
       <MuiThemeProvider theme={theme}>
@@ -36,7 +43,7 @@ export const initApp = (shell) => {
   });
 };
 
-export const initDevTool = (shell) => {
+export const initDevTool = (shell: Shell) => {
   initApp(shell);
   shell.onReload(() => {
     window.location.reload();

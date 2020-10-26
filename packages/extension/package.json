@@ -6,7 +6,7 @@
   "author": "DXOS.org",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && webpack -p",
+    "build": "npm run clean && webpack --mode development",
     "build:watch": "npm run clean && webpack --mode development --watch",
     "pack:crx": "crx pack dist -o dxos-devtools.crx",
     "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
@@ -39,6 +39,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "7.9.4",
     "@dxos/eslint-plugin": "^1.0.6",
+    "@types/chrome": "^0.0.125",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.0",
