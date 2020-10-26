@@ -37,7 +37,6 @@ const FeedViewer = () => {
   const [bridge] = useBridge();
   const [topics, setTopics] = useState();
   const [topic, setTopic] = useState();
-  const [type, setType] = useState();
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const FeedViewer = () => {
 
     if (topic) {
       (async () => {
-        feedListenerKey = await bridge.send('feed.subscribe', { topic, type });
+        feedListenerKey = await bridge.send('feed.subscribe', { topic });
       })();
     }
 
@@ -60,30 +59,24 @@ const FeedViewer = () => {
         bridge.send('feed.unsubscribe', { key: feedListenerKey });
       }
     };
-  }, [bridge, topic, type]);
+  }, [bridge, topic]);
 
   const onTopicChange = (value) => {
     setTopic(value);
-    setType(undefined);
   };
-
-  const onTypeChange = (value) => {
-    setType(value);
-  };
-
-  const types = [...new Set([...messages].map(({ data: { __type_url: type } }) => type))];
 
   const classes = useStyles();
+
+  console.log({ topics });
 
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
         <AutocompleteFilter label='Topic' options={topics} onChange={onTopicChange} value={topic} />
-        <AutocompleteFilter label='Message Type' options={types} onChange={onTypeChange} value={type} />
       </div>
 
       <div className={classes.feed}>
-        <Feed messages={messages} onSelect={(_, type) => setType(type)} />
+        <Feed messages={messages} />
       </div>
     </div>
   );

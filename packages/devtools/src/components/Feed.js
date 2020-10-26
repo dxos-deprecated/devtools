@@ -74,7 +74,7 @@ const Feed = ({ messages, onSelect }) => {
               const feedKey = key;
 
               const rowKey = `key-${feedKey}-${seq}`;
-              const type = data.echo !== undefined ? 'echo' : 'halo';
+              const type = getType(data);
 
               return (
                 <TableRow key={rowKey} size='small' className={clsx({ [classes.system]: type === 'halo' })}>
@@ -94,7 +94,7 @@ const Feed = ({ messages, onSelect }) => {
                   <TableCell className={classes.outerCell}>
                     <Link
                       style={{ color: color(type), cursor: 'pointer' }}
-                      onClick={() => onSelect(data)}
+                      onClick={() => onSelect?.(data)}
                     >
                       {type}
                     </Link>
@@ -120,5 +120,25 @@ const Feed = ({ messages, onSelect }) => {
     </TableContainer>
   );
 };
+
+function getType (message) {
+  if (message.echo) {
+    if (message.echo.genesis) {
+      return 'item genesis';
+    } else if (message.echo.itemMutation) {
+      return 'item mutation';
+    } else if (message.echo.mutation) {
+      return 'model mutation';
+    }
+  } else if (message.halo) {
+    if (message.halo.payload?.['__type_url'] === 'dxos.credentials.SignedMessage') {
+      return message.halo.payload.signed?.payload?.['__type_url'] ?? 'dxos.credentials.SignedMessage';
+    } else {
+      return message.halo.payload?.['__type_url'] ?? 'halo message';
+    }
+  } else {
+    return 'empty message';
+  }
+}
 
 export default Feed;
