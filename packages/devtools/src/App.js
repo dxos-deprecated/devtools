@@ -23,6 +23,7 @@ import KeyIcon from '@material-ui/icons/VpnKey';
 
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
+import { ConfigView } from './containers/ConfigView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
@@ -166,11 +167,7 @@ const App = () => {
       {/* Display hidden so that components maintain state. */}
 
       <div className={className('config')}>
-        {/* TODO(burdon): Get config. */}
-        <JsonTreeView
-          size='small'
-          depth={4}
-        />
+        <ConfigView />
       </div>
       <div className={className('metrics.values')}>
         <JsonTreeView

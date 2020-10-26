@@ -41,4 +41,8 @@ export default class BridgeProxy extends EventEmitter implements DevtoolsBridge 
   listen (message: string, fn: (data: any) => void) {
     Bridge.onMessage(message, fn);
   }
+
+  getConfig () {
+    return Bridge.sendMessage('config', {}, 'window');
+  }
 }

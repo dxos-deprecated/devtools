@@ -17,4 +17,6 @@ export interface DevtoolsBridge {
   listen (message: string, fn: (data: any) => void): void;
 
   on(event: 'api', cb: (ready: boolean) => void): void;
+
+  getConfig(): Promise<any>;
 }
