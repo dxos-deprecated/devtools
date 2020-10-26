@@ -1,3 +1,7 @@
+//
+// Copyright 2020 DXOS.org
+//
+
 export interface Stream<T> {
   send(msg: T): void;
   close(msg?: any): void;

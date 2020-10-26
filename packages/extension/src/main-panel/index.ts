@@ -5,7 +5,6 @@
 /* global chrome */
 
 import { initDevTool } from '../../../devtools/dist/src';
-
 import BridgeProxy from './bridge';
 
 const injected = false;

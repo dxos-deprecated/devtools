@@ -3,9 +3,9 @@
 //
 
 import { useContext } from 'react';
-import { DevtoolsBridge } from '../bridge';
 
 import { Context } from '../Provider';
+import { DevtoolsBridge } from '../bridge';
 import { raise } from '../raise';
 
 export const useBridge = (): [DevtoolsBridge] => {

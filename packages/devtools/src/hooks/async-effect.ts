@@ -1,6 +1,10 @@
-import { useEffect } from "react";
+//
+// Copyright 2020 DXOS.org
+//
 
-export function useAsyncEffect(body: () => Promise<void | undefined | (() => void)>, deps?: readonly any[]) {
+import { useEffect } from 'react';
+
+export function useAsyncEffect (body: () => Promise<void | undefined | (() => void)>, deps?: readonly any[]) {
   useEffect(() => {
     const promise = body();
     return () => {
@@ -10,5 +14,5 @@ export function useAsyncEffect(body: () => Promise<void | undefined | (() => voi
         }
       });
     };
-  }, deps)
+  }, deps);
 }

@@ -4,6 +4,7 @@
 
 import Bridge from 'crx-bridge';
 import { EventEmitter } from 'events';
+
 import type { DevtoolsBridge } from '@dxos/devtools';
 
 Bridge.setNamespace('dxos.devtools');

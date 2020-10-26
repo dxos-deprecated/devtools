@@ -6,8 +6,8 @@ import React, { useState } from 'react';
 
 import { JsonTreeView } from '@dxos/react-ux';
 
-import { useBridge } from '../hooks/bridge';
 import { useAsyncEffect } from '../hooks/async-effect';
+import { useBridge } from '../hooks/bridge';
 
 export default function ItemsViewer () {
   const [bridge] = useBridge();
