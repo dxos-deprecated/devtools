@@ -1,19 +1,17 @@
-import { humanize } from '@dxos/crypto';
-
 //
 // Copyright 2020 DXOS.org
 //
 
-/**
- *
- * @param {ECHO} echo
- */
-function getData (echo) {
+import Bridge from 'crx-bridge';
+
+import { humanize } from '@dxos/crypto';
+
+function getData (echo: any) {
   // TODO(marik-d): Display items hierarchically
-  const res = {};
+  const res: Record<string, any> = {};
   const parties = echo.queryParties().value;
   for (const party of parties) {
-    const partyInfo = {};
+    const partyInfo: Record<string, any> = {};
     res[`Party ${humanize(party.key)}`] = partyInfo;
 
     const items = party.database.queryItems().value;
@@ -31,11 +29,11 @@ function getData (echo) {
   return res;
 }
 
-export default ({ hook, bridge }) => {
-  bridge.onOpenStreamChannel('echo.items', stream => {
-    const partySubscriptions = [];
+export default ({ hook, bridge }: {hook: any, bridge: typeof Bridge }) => {
+  bridge.onOpenStreamChannel('echo.items', (stream) => {
+    const partySubscriptions: any[] = [];
 
-    const unsubscribe = hook.client.echo.queryParties().subscribe(parties => {
+    const unsubscribe = hook.client.echo.queryParties().subscribe((parties: any) => {
       partySubscriptions.forEach(unsub => unsub());
 
       for (const party of parties) {
