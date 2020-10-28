@@ -67,8 +67,6 @@ const FeedViewer = () => {
 
   const classes = useStyles();
 
-  console.log({ topics });
-
   return (
     <div className={classes.root}>
       <div className={classes.filter}>
