@@ -141,7 +141,7 @@ const App = () => {
       <div className={classes.sidebar}>
         <List dense aria-label='main tools'>
           {items.map(({ title, items = [] }) => (
-            <>
+            <div key={title}>
               <ListItem>
                 <ListItemText primary={title} />
               </ListItem>
@@ -159,7 +159,7 @@ const App = () => {
                 </ListItem>
               ))}
               <Divider />
-            </>
+            </div>
           ))}
         </List>
       </div>
