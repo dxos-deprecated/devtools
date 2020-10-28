@@ -13,7 +13,7 @@
 yarn && yarn build
 ```
 
-1. Open the __extensions__ manager in your browser: 
+2. Open the __extensions__ manager in your browser: 
 
 - [brave://extensions](brave://extensions)
 - [chrome://extensions](chrome://extensions)
@@ -21,8 +21,8 @@ yarn && yarn build
 - Edge (Not Supported Yet)
 - Safari (Not Supported Yet)
 
-1. Make sure you have the `developer` toggle __on__ and click on `Load Unpacked Extension` button.
-1. Search for the extension __dist__ folder (`<repo-root>/packages/extension/dist`) and select it.
+3. Make sure you have the `developer` toggle __on__ and click on `Load Unpacked Extension` button.
+4. Search for the extension __dist__ folder (`<repo-root>/packages/extension/dist`) and select it.
 
 ## Design
 
