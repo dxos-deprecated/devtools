@@ -43,7 +43,6 @@ const FeedViewer = () => {
     bridge.send('topics').then(topics => setTopics(topics));
 
     bridge.listen('feed.data', ({ data }) => {
-      console.log(data);
       setMessages(data);
     });
 
