@@ -8,9 +8,9 @@ import feedstore from './feedstore';
 import items from './items';
 import keys from './keys';
 import metrics from './metrics';
+import snapshots from './snapshots';
 import storage from './storage';
 import topic from './topic';
-import snapshots from './snapshots';
 
 export const initDevToolClientApi = ({ hook, bridge }) => {
   [feed, feedstore, keys, metrics, topic, storage, items, config, snapshots]

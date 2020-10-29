@@ -28,9 +28,9 @@ import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
+import SnapshotsView from './containers/SnapsotsView';
 import StorageTab from './containers/StorageTab';
 import { useMetrics } from './hooks/metrics';
-import SnapshotsView from './containers/SnapsotsView';
 
 const useStyles = makeStyles(theme => ({
   root: {
