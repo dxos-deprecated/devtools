@@ -28,6 +28,7 @@ import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
+import SnapshotsView from './containers/SnapsotsView';
 import StorageTab from './containers/StorageTab';
 import { useMetrics } from './hooks/metrics';
 
@@ -109,6 +110,11 @@ const items = [
       {
         id: 'echo.items',
         title: 'Items',
+        icon: AccountTreeIcon
+      },
+      {
+        id: 'echo.snapshots',
+        title: 'Snapshots',
         icon: AccountTreeIcon
       }
     ]
@@ -197,6 +203,9 @@ const App = () => {
       </div>
       <div className={className('echo.items')}>
         <ItemsViewer />
+      </div>
+      <div className={className('echo.snapshots')}>
+        <SnapshotsView />
       </div>
       <div className={className('mesh.swarm')}>
         {/* TODO(burdon): Any presence information? */}
