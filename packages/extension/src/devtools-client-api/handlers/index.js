@@ -10,8 +10,9 @@ import keys from './keys';
 import metrics from './metrics';
 import storage from './storage';
 import topic from './topic';
+import snapshots from './snapshots';
 
 export const initDevToolClientApi = ({ hook, bridge }) => {
-  [feed, feedstore, keys, metrics, topic, storage, items, config]
+  [feed, feedstore, keys, metrics, topic, storage, items, config, snapshots]
     .forEach(register => register({ hook, bridge }));
 };
