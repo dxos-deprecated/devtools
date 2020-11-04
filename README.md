@@ -6,7 +6,7 @@
 
 ## Instalation
 
-1. Grab a build from the latest release.
+1. Grab a build from the [latest release](https://github.com/dxos/devtools/releases).
 1. Unzip it.
 1. Enable developer mode in chrome.
 1. Load unpacked extension.
