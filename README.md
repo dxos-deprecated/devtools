@@ -6,7 +6,7 @@
 
 ## Instalation
 
-1. Grab an artifact from the latest build.
+1. Grab a build from the latest release.
 1. Unzip it.
 1. Enable developer mode in chrome.
 1. Load unpacked extension.
