@@ -4,7 +4,7 @@
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('party.keys', async ({ data: { topic } }) => {
-    const { client: { keyring, partyManager } } = hook;
+    const { keyring, partyManager } = hook;
 
     // For some reason the check under getParty throws.
     // const party = partyManager.getParty(Buffer.from(topic, 'hex'))
@@ -22,7 +22,7 @@ export default ({ hook, bridge }) => {
   });
 
   bridge.onMessage('keyring.keys', () => {
-    const { client: { keyring } } = hook;
+    const { keyring } = hook;
 
     return keyring.keys
       .map(({ type, publicKey, added, own, trusted }) => ({

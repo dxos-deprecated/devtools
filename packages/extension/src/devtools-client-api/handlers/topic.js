@@ -4,7 +4,7 @@
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('topics', () => {
-    return hook.client.feedStore
+    return hook.feedStore
       .getDescriptors()
       .filter(descriptor => descriptor.opened)
       .map(({ metadata }) => metadata.partyKey.toString('hex'));

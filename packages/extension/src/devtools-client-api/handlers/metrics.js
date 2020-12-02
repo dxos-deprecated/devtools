@@ -2,20 +2,22 @@
 // Copyright 2020 DXOS.org
 //
 
+import metrics from '@dxos/metrics';
+
 const metricslisteners = new Map();
 
 export default ({ hook, bridge }) => {
   const onMetrics = senderName => () => {
     const data = {
-      values: hook.metrics.values,
-      events: hook.metrics.events
+      values: metrics.values,
+      events: metrics.events
     };
     bridge.sendMessage('metrics.data', data, senderName);
   };
 
   bridge.onMessage('metrics.subscribe', ({ sender }) => {
     const metricsHandler = onMetrics(sender.name);
-    const handlerOff = hook.metrics.on(null, metricsHandler);
+    const handlerOff = metrics.on(null, metricsHandler);
 
     // Send first grab of metrics right away.
     metricsHandler();

@@ -4,7 +4,7 @@
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('feedstore.descriptors', () => {
-    return hook.client.feedStore
+    return hook.feedStore
       .getDescriptors()
       .map(({ feed, path, opened, metadata }) => ({ path, opened, metadata, blocks: feed.length }));
   });
