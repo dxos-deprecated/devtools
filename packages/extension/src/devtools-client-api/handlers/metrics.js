@@ -6,7 +6,7 @@ import metrics from '@dxos/metrics';
 
 const metricslisteners = new Map();
 
-export default ({ hook, bridge }) => {
+export default ({ bridge }) => {
   const onMetrics = senderName => () => {
     const data = {
       values: metrics.values,
