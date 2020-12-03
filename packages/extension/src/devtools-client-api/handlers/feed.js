@@ -10,7 +10,7 @@ export default ({ hook, bridge }) => {
 
     const feedMessages = [];
 
-    const feedDescriptors = hook.client.feedStore.getDescriptors().filter(d => d.metadata.partyKey.toString('hex') === topic);
+    const feedDescriptors = hook.feedStore.getDescriptors().filter(d => d.metadata.partyKey.toString('hex') === topic);
     feedDescriptors.forEach(feedDescriptor => {
       const stream = feedDescriptor.feed.createReadStream({ live: true });
       stream.on('data', (data) => {
