@@ -2,8 +2,8 @@
 // Copyright 2020 DXOS.org
 //
 
-import debugLogging from './debug-logging';
 import config from './config';
+import debugLogging from './debug-logging';
 import feed from './feed';
 import feedstore from './feedstore';
 import items from './items';

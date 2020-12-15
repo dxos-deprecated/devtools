@@ -20,7 +20,7 @@ export const DebugLoggingView = () => {
       const namespacesFetched = await bridge.send('debug-logging.disable', null);
       await bridge.send('debug-logging.enable', namespacesFetched);
       setNamespaces(namespacesFetched);
-    }
+    };
     fetchNamespaces().catch(console.error);
   }, []);
 
@@ -28,18 +28,18 @@ export const DebugLoggingView = () => {
     const allNamespaces = '*';
     setNamespaces(allNamespaces);
     bridge.send('debug-logging.enable', allNamespaces);
-  }
+  };
 
   const handleDisableLogging = () => {
     setNamespaces('');
     const foo = bridge.send('debug-logging.disable', null);
-  }
+  };
 
   const handleCustomLogging = async () => {
     // Disable first otherwise the new namespaces are added to the existing enabled set
     await bridge.send('debug-logging.disable', null);
     await bridge.send('debug-logging.enable', namespaces);
-  }
+  };
 
   return (
     <span>

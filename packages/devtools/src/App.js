@@ -16,16 +16,16 @@ import MetricsIcon from '@material-ui/icons/BugReport';
 import StorageIcon from '@material-ui/icons/Dns';
 import FeedIcon from '@material-ui/icons/Pageview';
 import SwarmIcon from '@material-ui/icons/Router';
-import LoggingIcon from '@material-ui/icons/Subject';
 import ConfigIcon from '@material-ui/icons/Settings';
 import StoreIcon from '@material-ui/icons/Storage';
+import LoggingIcon from '@material-ui/icons/Subject';
 import EventsIcon from '@material-ui/icons/Timer';
 import KeyIcon from '@material-ui/icons/VpnKey';
 
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
-import { DebugLoggingView } from './containers/DebugLoggingView';
 import { ConfigView } from './containers/ConfigView';
+import { DebugLoggingView } from './containers/DebugLoggingView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
