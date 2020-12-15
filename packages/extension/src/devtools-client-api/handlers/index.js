@@ -2,6 +2,7 @@
 // Copyright 2020 DXOS.org
 //
 
+import debugLogging from './debug-logging';
 import config from './config';
 import feed from './feed';
 import feedstore from './feedstore';
@@ -13,6 +14,6 @@ import storage from './storage';
 import topic from './topic';
 
 export const initDevToolClientApi = ({ hook, bridge }) => {
-  [feed, feedstore, keys, metrics, topic, storage, items, config, snapshots]
+  [feed, feedstore, keys, metrics, topic, storage, items, config, snapshots, debugLogging]
     .forEach(register => register({ hook, bridge }));
 };

@@ -16,6 +16,7 @@ import MetricsIcon from '@material-ui/icons/BugReport';
 import StorageIcon from '@material-ui/icons/Dns';
 import FeedIcon from '@material-ui/icons/Pageview';
 import SwarmIcon from '@material-ui/icons/Router';
+import LoggingIcon from '@material-ui/icons/Subject';
 import ConfigIcon from '@material-ui/icons/Settings';
 import StoreIcon from '@material-ui/icons/Storage';
 import EventsIcon from '@material-ui/icons/Timer';
@@ -23,6 +24,7 @@ import KeyIcon from '@material-ui/icons/VpnKey';
 
 import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
 
+import { DebugLoggingView } from './containers/DebugLoggingView';
 import { ConfigView } from './containers/ConfigView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
@@ -128,6 +130,16 @@ const items = [
         icon: SwarmIcon
       }
     ]
+  },
+  {
+    title: 'DEBUG',
+    items: [
+      {
+        id: 'debug.logging',
+        title: 'Logging',
+        icon: LoggingIcon
+      }
+    ]
   }
 ];
 
@@ -210,6 +222,9 @@ const App = () => {
       <div className={className('mesh.swarm')}>
         {/* TODO(burdon): Any presence information? */}
         <div>SWARM CONNECTIONS</div>
+      </div>
+      <div className={className('debug.logging')}>
+        <DebugLoggingView />
       </div>
     </div>
   );
