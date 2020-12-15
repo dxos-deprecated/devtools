@@ -32,7 +32,7 @@ export const DebugLoggingView = () => {
 
   const handleDisableLogging = () => {
     setNamespaces('');
-    const foo = bridge.send('debug-logging.disable', null);
+    bridge.send('debug-logging.disable', null);
   };
 
   const handleCustomLogging = async () => {
