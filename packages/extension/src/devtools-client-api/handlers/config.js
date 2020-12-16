@@ -9,7 +9,7 @@ export default ({ hook, bridge }) => {
         config: JSON.parse(JSON.stringify(hook.client.config)), // make sure the config is serializable
         profile: {
           username: hook.client.getProfile()?.username,
-          publicKey: hook.client.getProfile()?.publicKey.toString()
+          publicKey: hook.client.getProfile()?.publicKey.toHex()
         }
       };
     } catch (e) {
