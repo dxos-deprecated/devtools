@@ -12,7 +12,7 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: simple
+          release-type: node
           package-name: '@dxos/devtools'
           bump-minor-on-breaking: true
       # The logic below handles the npm publication:
