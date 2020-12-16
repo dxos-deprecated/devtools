@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/dxos/devtools/compare/v1.0.1...v1.0.2) (2020-12-16)
+
+
+### Bug Fixes
+
+* Update devtools to new SDK/ECHO ([#35](https://www.github.com/dxos/devtools/issues/35)) ([86197d8](https://www.github.com/dxos/devtools/commit/86197d8f94f155178dc8f77a1371f212676f2208))
+
 ### [1.0.1](https://www.github.com/dxos/devtools/compare/v1.0.0...v1.0.1) (2020-12-16)
 
 
