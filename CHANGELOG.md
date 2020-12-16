@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/dxos/devtools/compare/v1.0.0...v1.0.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* Trigger publish ([f1ce6bd](https://www.github.com/dxos/devtools/commit/f1ce6bd31ad80fbcc3eb34047f4f89158ec49536))
+
 ## 1.0.0 (2020-12-16)
 
 
