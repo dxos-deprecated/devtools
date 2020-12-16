@@ -33,6 +33,9 @@ jobs:
           yarn build
           git commit -am "${{ steps.release.outputs.tag_name }}"
           git push
+
+          echo "Upload assets using ${{ steps.release.outputs.upload_url }}"
+
         if: ${{ steps.release.outputs.release_created }}
       - uses: actions/upload-artifact@v2
         with:
