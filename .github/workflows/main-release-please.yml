@@ -1,0 +1,41 @@
+on:
+  push:
+    branches:
+      - main
+name: main - release-please
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: dxos/release-please-action@v0.0.105
+        id: release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: simple
+          package-name: '@dxos/devtools'
+          bump-minor-on-breaking: true
+      # The logic below handles the npm publication:
+      - uses: actions/checkout@v2
+        # these if statements ensure that a publication only occurs when
+        # a new release is created:
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+        if: ${{ steps.release.outputs.release_created }}
+      - name: Update version
+        run: |
+          git config --global user.email "npm@dxos.network"
+          git config --global user.name "DXOS"
+          yarn install --frozen-lockfile
+          node packages/extension/scripts/update-version.js `echo "${{ steps.release.outputs.tag_name }}" | sed 's/^v//'`
+          yarn build
+          git commit -am "${{ steps.release.outputs.tag_name }}"
+          git push
+        if: ${{ steps.release.outputs.release_created }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dxos-devtools
+          path: packages/extension/dist
+        if: ${{ steps.release.outputs.release_created }}
