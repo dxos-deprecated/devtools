@@ -30,7 +30,7 @@ async function subscribeToEcho (client: any, stream: Stream) {
       console.log(res);
       stream.send(res);
     } catch (err) {
-      console.error('update error');
+      console.error('DXOS DevTools: Snapshots update error');
       console.error(err);
     }
   }
@@ -47,7 +47,7 @@ async function subscribeToEcho (client: any, stream: Stream) {
 
     update();
   } catch (e) {
-    console.error('snapshots handler failed to subscribe to echo.');
+    console.error('DXOS DevTools: Snapshots handler failed to subscribe to echo.');
     console.error(e);
   }
 }

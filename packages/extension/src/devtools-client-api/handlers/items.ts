@@ -33,7 +33,7 @@ async function subscribeToEcho (client: any, stream: Stream) {
       const res = getData(client.echo);
       stream.send(res);
     } catch (err) {
-      console.error('update error');
+      console.error('DXOS DevTools: Items update error');
       console.error(err);
     }
   }
@@ -61,7 +61,7 @@ async function subscribeToEcho (client: any, stream: Stream) {
 
     update();
   } catch (e) {
-    console.error('items handler failed to subscribe to echo.');
+    console.error('DXOS DevTools: Items handler failed to subscribe to echo.');
     console.error(e);
   }
 }
