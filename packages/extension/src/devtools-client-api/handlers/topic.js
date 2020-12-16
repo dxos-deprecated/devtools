@@ -4,9 +4,14 @@
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('topics', () => {
-    return hook.feedStore
-      .getDescriptors()
-      .filter(descriptor => descriptor.opened)
-      .map(({ metadata }) => metadata.partyKey.toString('hex'));
+    try {
+      return hook.feedStore
+        .getDescriptors()
+        .filter(descriptor => descriptor.opened)
+        .map(({ metadata }) => metadata.partyKey.toString('hex'));
+    } catch (e) {
+      console.error('DXOS DevTools: topics handler failed to respond');
+      console.log(e);
+    }
   });
 };

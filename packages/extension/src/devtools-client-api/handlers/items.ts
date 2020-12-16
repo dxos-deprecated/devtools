@@ -2,9 +2,7 @@
 // Copyright 2020 DXOS.org
 //
 
-import Bridge from 'crx-bridge';
-
-import { humanize } from '@dxos/crypto';
+import Bridge, { Stream } from 'crx-bridge';
 
 function getData (echo: any) {
   // TODO(marik-d): Display items hierarchically
@@ -12,13 +10,13 @@ function getData (echo: any) {
   const parties = echo.queryParties().value;
   for (const party of parties) {
     const partyInfo: Record<string, any> = {};
-    res[`Party ${humanize(party.key)}`] = partyInfo;
+    res[`Party ${party.key.toHex()}`] = partyInfo;
 
     const items = party.database.queryItems().value;
     for (const item of items) {
       const modelName = Object.getPrototypeOf(item.model).constructor.name;
-      partyInfo[`${modelName} ${item.type} ${humanize(item.id)}`] = {
-        id: humanize(item.id),
+      partyInfo[`${modelName} ${item.type} ${item.id}`] = {
+        id: item.id,
         type: item.type,
         modelType: item.model._meta.type,
         modelName
@@ -29,11 +27,22 @@ function getData (echo: any) {
   return res;
 }
 
-export default ({ hook, bridge }: {hook: any, bridge: typeof Bridge }) => {
-  bridge.onOpenStreamChannel('echo.items', (stream) => {
+async function subscribeToEcho (client: any, stream: Stream) {
+  function update () {
+    try {
+      const res = getData(client.echo);
+      stream.send(res);
+    } catch (err) {
+      console.error('DXOS DevTools: Items update error');
+      console.error(err);
+    }
+  }
+
+  try {
+    await client.initialize();
     const partySubscriptions: any[] = [];
 
-    const unsubscribe = hook.client.echo.queryParties().subscribe((parties: any) => {
+    const unsubscribe = client.echo.queryParties().subscribe((parties: any) => {
       partySubscriptions.forEach(unsub => unsub());
 
       for (const party of parties) {
@@ -45,21 +54,20 @@ export default ({ hook, bridge }: {hook: any, bridge: typeof Bridge }) => {
       update();
     });
 
-    function update () {
-      try {
-        const res = getData(hook.client.echo);
-        stream.send(res);
-      } catch (err) {
-        console.error('update error');
-        console.error(err);
-      }
-    }
-
     stream.onClose(() => {
       partySubscriptions.forEach(unsub => unsub());
       unsubscribe();
     });
 
     update();
+  } catch (e) {
+    console.error('DXOS DevTools: Items handler failed to subscribe to echo.');
+    console.error(e);
+  }
+}
+
+export default ({ hook, bridge }: {hook: any, bridge: typeof Bridge }) => {
+  bridge.onOpenStreamChannel('echo.items', (stream) => {
+    subscribeToEcho(hook.client, stream);
   });
 };

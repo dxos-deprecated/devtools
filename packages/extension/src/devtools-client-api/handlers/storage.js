@@ -4,7 +4,12 @@
 
 export default ({ hook, bridge }) => {
   bridge.onMessage('storage.reset', async () => {
-    await hook.client.reset();
-    window.location.reload();
+    try {
+      await hook.client.reset();
+      window.location.reload();
+    } catch (e) {
+      console.error('DXOS DevTools: reset handler failed to respond');
+      console.log(e);
+    }
   });
 };

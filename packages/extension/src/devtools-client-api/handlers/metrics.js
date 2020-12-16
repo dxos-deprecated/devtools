@@ -16,18 +16,23 @@ export default ({ bridge }) => {
   };
 
   bridge.onMessage('metrics.subscribe', ({ sender }) => {
-    const metricsHandler = onMetrics(sender.name);
-    const handlerOff = metrics.on(null, metricsHandler);
+    try {
+      const metricsHandler = onMetrics(sender.name);
+      const handlerOff = metrics.on(null, metricsHandler);
 
-    // Send first grab of metrics right away.
-    metricsHandler();
+      // Send first grab of metrics right away.
+      metricsHandler();
 
-    const listenerKey = Date.now();
-    metricslisteners.set(listenerKey, () => {
-      handlerOff();
-    });
+      const listenerKey = Date.now();
+      metricslisteners.set(listenerKey, () => {
+        handlerOff();
+      });
 
-    return listenerKey;
+      return listenerKey;
+    } catch (e) {
+      console.error('DXOS DevTools: metrics handler failed to respond');
+      console.log(e);
+    }
   });
 
   bridge.onMessage('metrics.unsubscribe', async ({ data: { key } }) => {
