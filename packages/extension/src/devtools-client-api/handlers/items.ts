@@ -10,7 +10,7 @@ function getData (echo: any) {
   const parties = echo.queryParties().value;
   for (const party of parties) {
     const partyInfo: Record<string, any> = {};
-    res[`Party ${party.key.toString()}`] = partyInfo;
+    res[`Party ${party.key.toHex()}`] = partyInfo;
 
     const items = party.database.queryItems().value;
     for (const item of items) {
