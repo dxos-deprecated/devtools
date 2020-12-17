@@ -41,3 +41,5 @@ version.json
 .vscode
 .idea
 
+.yalc
+yalc.lock
