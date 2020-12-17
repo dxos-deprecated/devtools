@@ -42,7 +42,6 @@ const Keys = () => {
 
   useEffect(() => {
     bridge.send('topics').then(topics => {
-      // TODO(burdon): Returns array of null objects.
       setTopics(topics);
     });
 
