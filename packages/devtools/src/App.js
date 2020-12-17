@@ -30,6 +30,7 @@ import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
 import SnapshotsView from './containers/SnapsotsView';
 import StorageTab from './containers/StorageTab';
+import Swarm from './containers/Swarm';
 import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({
@@ -208,8 +209,7 @@ const App = () => {
         <SnapshotsView />
       </div>
       <div className={className('mesh.swarm')}>
-        {/* TODO(burdon): Any presence information? */}
-        <div>SWARM CONNECTIONS</div>
+        <Swarm/>
       </div>
     </div>
   );
