@@ -13,17 +13,15 @@ import { useBridge } from '../hooks/bridge';
 export default function Swarm () {
   const [bridge] = useBridge();
   const [data, setData] = useState({});
+  const [topics, setTopics] = useState();
 
   useAsyncEffect(async () => {
-    // const stream = await bridge.openStream('echo.items');
-
-    // stream.onMessage(data => {
-    //   console.log({ data });
-    //   setData(data);
-    // });
-
-    // return () => stream.close();
+    bridge.send('topics', {}).then(topics => {
+      setTopics(topics);
+    });
   }, [bridge]);
+
+  console.log('topics', topics);
 
   return (
     <PeerGraph size={{}} onClick={undefined} peers={[]}/>
