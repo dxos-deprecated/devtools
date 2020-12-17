@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { Button, makeStyles } from '@material-ui/core';
 
 // import { PeerGraph } from '@dxos/network-devtools';
+import { SignalStatus } from '@dxos/network-devtools';
 import { JsonTreeView } from '@dxos/react-ux';
 
 import AutocompleteFilter from '../components/AutocompleteFilter';
@@ -37,32 +38,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Swarm () {
+export default function Signal () {
   const classes = useStyles();
   const [bridge] = useBridge();
   const [data, setData] = useState({});
   const [topics, setTopics] = useState();
   const [selectedTopic, setSelectedTopic] = useState();
 
-  const refreshTopics = async () => {
-    try {
-      const topics = await bridge.send('topics', {});
-      setTopics(topics);
-    } catch (e) {
-      console.error('DXOS DevTools: failed to get topics');
-      console.log(e);
-    }
-  };
+  // const refreshTopics = async () => {
+  //   try {
+  //     const topics = await bridge.send('topics', {});
+  //     setTopics(topics);
+  //   } catch (e) {
+  //     console.error('DXOS DevTools: failed to get topics');
+  //     console.log(e);
+  //   }
+  // };
+
+  // useAsyncEffect(async () => {
+  //   await refreshTopics;
+  // }, [bridge]);
 
   useAsyncEffect(async () => {
-    await refreshTopics;
-  }, [bridge]);
+    const stream = await bridge.openStream('network.signal.status');
 
-  console.log('topics', topics);
+    stream.onMessage(data => {
+      console.log('network.signal.status received');
+      console.log({ data });
+      setData(data);
+    });
+
+    return () => stream.close();
+  }, [bridge]);
 
   return (
     <div className={classes.root}>
-      <div className={classes.filter}>
+      {/* <div className={classes.filter}>
         <AutocompleteFilter label='Topic' options={topics} onChange={setSelectedTopic} value={selectedTopic} />
         <Button variant="contained" onClick={refreshTopics}>Refresh</Button>
       </div>
@@ -72,7 +83,8 @@ export default function Swarm () {
         ) : (
           <p>Select a topic.</p>
         )}
-      </div>
+      </div> */}
+      <SignalStatus status={[]} />
     </div>
   );
 }

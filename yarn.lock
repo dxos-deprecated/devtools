@@ -1380,14 +1380,14 @@
     protobufjs "^6.9.0"
     source-map-support "^0.5.12"
 
-"@dxos/network-devtools@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@dxos/network-devtools/-/network-devtools-1.0.2.tgz#159ae69aeece102f15ef2b3297b01829d4dbbb02"
-  integrity sha512-o8bPxr+oTzM8xLMtv4FmxgcTMjIut9ie08N5pJqWyjDR9oi8tZ2vc5DFkHB5tMJHsDnfi0pHRLNCto0HiSgFwA==
+"@dxos/network-devtools@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dxos/network-devtools/-/network-devtools-1.0.4.tgz#2dc1d7f72575b52340b1922028d21589915b5216"
+  integrity sha512-EZSqlAVy5moc+OaL7vmeQAICF2UaS9Vi/r3xCjq8KtWv11ioaVK59Di/d0ivTOjRO1jm23nju2KuDqelY4Q9Pg==
   dependencies:
     "@dxos/gem-core" "1.0.0-beta.25"
     "@dxos/gem-spore" "1.0.0-beta.25"
-    "@dxos/network-manager" "^1.0.2"
+    "@dxos/network-manager" "1.0.4"
     "@dxos/react-ux" "~2.7.41-alpha.0"
     "@geut/discovery-swarm-webrtc" "^4.0.2"
     "@material-ui/core" "^4.11.2"
@@ -1419,15 +1419,15 @@
     wrtc "^0.4.6"
     xor-distance "^2.0.0"
 
-"@dxos/network-manager@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@dxos/network-manager/-/network-manager-1.0.2.tgz#0b0ed12e4fd68c5b2b66c103259abfe450a8060e"
-  integrity sha512-/bHRHe+oOoIzoT05ZfkMcRGz1hawdIRa0OL3uStv/llqQXyPJ2Vv4CiFx+k0Jfu7fU2NmrFQ1Wwh6DX6zrl3hw==
+"@dxos/network-manager@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dxos/network-manager/-/network-manager-1.0.4.tgz#9c56482191ab195fd2f8ee55fd5db6eaa20c08d9"
+  integrity sha512-FLSWUyIgLeuTZ1U/svpo6UaAfQqOHDdU+oxBh67IAe0PHQvSkUCxCOQAx5W9sqmR/2fH+Jm3QkGkswlh4uf4ow==
   dependencies:
     "@dxos/async" "~1.0.2-alpha.0"
     "@dxos/crypto" "1.0.7"
     "@dxos/metrics" "~1.0.0-beta.9"
-    "@dxos/protocol" "^1.0.2"
+    "@dxos/protocol" "1.0.4"
     "@dxos/util" "~2.4.0"
     "@types/mocha" "^8.0.4"
     "@types/simple-peer" "^9.6.1"
@@ -1476,6 +1476,24 @@
     debug "^4.1.1"
     source-map-support "^0.5.12"
 
+"@dxos/protocol@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.0.4.tgz#9019d65d4b34eb9e7c90e004d38279350f92d030"
+  integrity sha512-BOGrYarfXtn7bCGhDNbESPtlyg+0ILYlb1n0fhdzzutQItgyKrtRSsGPuM7dLYwMrpj64chi/vPpvueim2Lzkw==
+  dependencies:
+    "@dxos/codec-protobuf" "1.1.0-beta.10"
+    assert "^2.0.0"
+    buffer-json-encoding "^1.0.2"
+    debug "^4.1.1"
+    end-of-stream "^1.4.4"
+    humanhash "^1.0.4"
+    hypercore-protocol "^6.11.1"
+    nanoerror "^1.2.1"
+    nanomessage "^5.4.0"
+    nanoresource-promise "^2.0.0"
+    signal-promise "^1.0.3"
+    source-map-support "^0.5.12"
+
 "@dxos/protocol@1.1.0-beta.21", "@dxos/protocol@^1.1.0-beta.21":
   version "1.1.0-beta.21"
   resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.1.0-beta.21.tgz#f408b1dc1b62f22d1e1622ff2cae07bbf903948a"
@@ -1498,24 +1516,6 @@
   version "1.0.0-beta.119"
   resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.0.0-beta.119.tgz#cae3133d6310916dd626881ad8d19a3ac5a565e2"
   integrity sha512-FK2JjqepACntLFbI+ajh2k4BUZqmaUieWt+dDpk8j5Iyk/MB5gltX9LjO4kawcisPs8SrwydPMioLEJeKjFA/A==
-  dependencies:
-    "@dxos/codec-protobuf" "1.1.0-beta.10"
-    assert "^2.0.0"
-    buffer-json-encoding "^1.0.2"
-    debug "^4.1.1"
-    end-of-stream "^1.4.4"
-    humanhash "^1.0.4"
-    hypercore-protocol "^6.11.1"
-    nanoerror "^1.2.1"
-    nanomessage "^5.4.0"
-    nanoresource-promise "^2.0.0"
-    signal-promise "^1.0.3"
-    source-map-support "^0.5.12"
-
-"@dxos/protocol@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.0.2.tgz#f664784d7ce0bdc545bc3e4572e78fffea14d96c"
-  integrity sha512-mv4SrDn3h/LnVojWdx+qabnwL8sOUyf45I/ufOK5t37gPLj0iUfvbiwgRT09Oucs1kaSpDILU/FAd7tdRak+jQ==
   dependencies:
     "@dxos/codec-protobuf" "1.1.0-beta.10"
     assert "^2.0.0"
@@ -6044,7 +6044,7 @@ debug@^4.2.0:
   dependencies:
     ms "2.1.2"
 
-"debug@github:ngokevin/debug#noTimestamp":
+debug@ngokevin/debug#noTimestamp:
   version "2.2.0"
   resolved "https://codeload.github.com/ngokevin/debug/tar.gz/ef5f8e66d49ce8bc64c6f282c15f8b7164409e3a"
 
@@ -6291,7 +6291,7 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-"document-register-element@github:dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90":
+document-register-element@dmarcos/document-register-element#8ccc532b7f3744be954574caf3072a5fd260ca90:
   version "0.5.4"
   resolved "https://codeload.github.com/dmarcos/document-register-element/tar.gz/8ccc532b7f3744be954574caf3072a5fd260ca90"
 
@@ -14084,7 +14084,7 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
-"three-bmfont-text@github:dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e":
+three-bmfont-text@dmarcos/three-bmfont-text#1babdf8507c731a18f8af3b807292e2b9740955e:
   version "2.3.0"
   resolved "https://codeload.github.com/dmarcos/three-bmfont-text/tar.gz/1babdf8507c731a18f8af3b807292e2b9740955e"
   dependencies:

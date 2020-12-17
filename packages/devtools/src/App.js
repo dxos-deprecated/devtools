@@ -28,9 +28,9 @@ import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
+import Signal from './containers/Signal';
 import SnapshotsView from './containers/SnapsotsView';
 import StorageTab from './containers/StorageTab';
-import Swarm from './containers/Swarm';
 import { useMetrics } from './hooks/metrics';
 
 const useStyles = makeStyles(theme => ({
@@ -127,6 +127,11 @@ const items = [
         id: 'mesh.swarm',
         title: 'Swarm',
         icon: SwarmIcon
+      },
+      {
+        id: 'mesh.signal',
+        title: 'Signal',
+        icon: SwarmIcon
       }
     ]
   }
@@ -208,8 +213,11 @@ const App = () => {
       <div className={className('echo.snapshots')}>
         <SnapshotsView />
       </div>
+      <div className={className('mesh.signal')}>
+        <Signal/>
+      </div>
       <div className={className('mesh.swarm')}>
-        <Swarm/>
+        <p>TODO</p>
       </div>
     </div>
   );
