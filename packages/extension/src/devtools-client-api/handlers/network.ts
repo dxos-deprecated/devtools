@@ -11,11 +11,9 @@ import { SignalApi } from '@dxos/network-manager';
 async function subscribeToNetworkStatus (hook: DevtoolsContext, stream: Stream) {
   async function update () {
     const status = hook.networkManager.signal.getStatus();
-    console.log('status in update:', status);
     stream.send(status);
   }
 
-  console.log('network subscribing to status changed events');
   hook.networkManager.signal.statusChanged.on(reportError(update));
   await update();
 }
@@ -37,11 +35,9 @@ async function subscribeToNetworkTopics (hook: DevtoolsContext, stream: Stream) 
       topic: topic.toHex(),
       label: hook.networkManager.getSwarm(topic)?.label ?? topic.toHex()
     }));
-    console.log('labeledTopics in update:', labeledTopics);
     stream.send(labeledTopics);
   }
 
-  console.log('network subscribing to topics changed events');
   hook.networkManager.topicsUpdated.on(reportError(update));
   await update();
 }
@@ -57,14 +53,10 @@ export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge 
     reportError(subscribeToNetworkTopics)(hook, stream);
   });
   bridge.onMessage('network.peers', ({ data }) => {
-    console.log('network.peers message received', { data });
     if (!data && !data.topic) {
       throw new Error('Expected a network topic');
     }
-    const swarm = hook.networkManager.getSwarm(PublicKey.from(data.topic));
-    console.log('swarm', swarm);
     const map = hook.networkManager.getSwarmMap(PublicKey.from(data.topic));
-    console.log('map', map);
     return map?.peers.map(peer => ({ ...peer, id: peer.id.toHex() }));
   });
 };

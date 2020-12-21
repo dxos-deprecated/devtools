@@ -48,14 +48,9 @@ export default function Signal () {
   const [selectedTopic, setSelectedTopic] = useState('');
   const [peers, setPeers] = useState<PeerState[]>([]);
 
-  console.log('networkTopics', networkTopics);
-  console.log('selectedTopic', selectedTopic);
-  console.log('peers', peers);
-
   useAsyncEffect(async () => {
     const stream = await bridge.openStream('network.topics');
     stream.onMessage(data => {
-      // console.log('Swarm graph received', data);
       setNetworkTopics(data);
     });
     return () => stream.close();
@@ -66,11 +61,12 @@ export default function Signal () {
       setPeers([]);
       return;
     }
-    const interval = setInterval(async () => {
+    const updatePeers = async () => {
       const result = await bridge.send('network.peers', { topic: selectedTopic });
-      console.log('result', result);
       setPeers(result.map((peer: any) => ({ ...peer, id: PublicKey.from(peer.id) })));
-    }, 5000);
+    };
+    await updatePeers();
+    const interval = setInterval(updatePeers, 5000);
     return () => clearInterval(interval);
   }, [bridge, selectedTopic]);
 
