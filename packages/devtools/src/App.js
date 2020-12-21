@@ -28,6 +28,7 @@ import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
 import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
+import Signal from './containers/Signal';
 import SnapshotsView from './containers/SnapsotsView';
 import StorageTab from './containers/StorageTab';
 import { useMetrics } from './hooks/metrics';
@@ -213,10 +214,13 @@ const App = () => {
         <SnapshotsView />
       </div>
       <div className={className('mesh.signal')}>
-        <p>TODO</p>
+        <Signal />
+      </div>
+      <div className={className('mesh.trace')}>
+        <p>TODO trace</p>
       </div>
       <div className={className('mesh.swarm')}>
-        <p>TODO</p>
+        <p>TODO swarm graph</p>
       </div>
     </div>
   );
