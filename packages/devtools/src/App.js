@@ -26,6 +26,7 @@ import { JsonTreeView } from '@dxos/react-ux';
 import { ConfigView } from './containers/ConfigView';
 import FeedStore from './containers/FeedStore';
 import FeedViewer from './containers/FeedViewer';
+import SwarmGraph from './containers/SwarmGraph';
 import ItemsViewer from './containers/ItemsViewer';
 import Keys from './containers/Keys';
 import Signal from './containers/Signal';
@@ -217,7 +218,7 @@ const App = () => {
         <Signal />
       </div>
       <div className={className('mesh.swarm')}>
-        <p>TODO swarm graph</p>
+        <SwarmGraph />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@
 import Bridge, { Stream } from 'crx-bridge';
 
 import { DevtoolsContext } from '@dxos/client/dist/src/devtools-context';
-import { SignalApi } from '@dxos/network-manager'
+import { SignalApi } from '@dxos/network-manager';
 
 async function subscribeToNetworkStatus (hook: DevtoolsContext, stream: Stream) {
   async function update () {
@@ -19,7 +19,7 @@ async function subscribeToNetworkStatus (hook: DevtoolsContext, stream: Stream) 
   await update();
 }
 
-async function subscribeToNetworkTrace(hook: DevtoolsContext, stream: Stream) {
+async function subscribeToNetworkTrace (hook: DevtoolsContext, stream: Stream) {
   const trace: SignalApi.CommandTrace[] = [];
   hook.networkManager.signal.commandTrace.on(msg => {
     reportError(() => {
@@ -29,12 +29,31 @@ async function subscribeToNetworkTrace(hook: DevtoolsContext, stream: Stream) {
   });
 }
 
+async function subscribeToNetworkTopics (hook: DevtoolsContext, stream: Stream) {
+  async function update () {
+    const topics = hook.networkManager.topics;
+    const labeledTopics = topics.map(topic => ({
+      topic: topic.asUint8Array(),
+      label: hook.networkManager.getSwarm(topic)?.label ?? topic.toHex()
+    }));
+    console.log('labeledTopics in update:', labeledTopics);
+    stream.send(labeledTopics);
+  }
+
+  console.log('network subscribing to topics changed events');
+  hook.networkManager.topicsUpdated.on(reportError(update));
+  await update();
+}
+
 export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge }) => {
   bridge.onOpenStreamChannel('network.signal.status', (stream) => {
     reportError(subscribeToNetworkStatus)(hook, stream);
   });
   bridge.onOpenStreamChannel('network.signal.trace', (stream) => {
     reportError(subscribeToNetworkTrace)(hook, stream);
+  });
+  bridge.onOpenStreamChannel('network.topics', (stream) => {
+    reportError(subscribeToNetworkTopics)(hook, stream);
   });
 };
 
