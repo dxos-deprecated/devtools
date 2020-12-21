@@ -1169,13 +1169,6 @@
     humanhash "^1.0.4"
     hypercore-crypto "^1.0.0"
 
-"@dxos/debug@1.0.0-beta.73":
-  version "1.0.0-beta.73"
-  resolved "https://registry.yarnpkg.com/@dxos/debug/-/debug-1.0.0-beta.73.tgz#0bbc4d4a5f48bde79394c78d323d62255ec2fb26"
-  integrity sha512-wiDCYA+stgNyhXZUNj5xGxWxyKFbJw3pwrzU9PGnmYh0J0DXrJwvJ8dkBITxDXQRLESKFW1SW5ixb/7kmTl77w==
-  dependencies:
-    debug "^4.1.1"
-
 "@dxos/debug@^1.0.0-beta.41":
   version "1.0.0-beta.67"
   resolved "https://registry.yarnpkg.com/@dxos/debug/-/debug-1.0.0-beta.67.tgz#967eca2a43c68db56aff4093b6ee1be36837d715"
@@ -1314,7 +1307,7 @@
     source-map-support "^0.5.12"
     through2 "^3.0.1"
 
-"@dxos/gem-core@1.0.0-beta.25", "@dxos/gem-core@^1.0.0-beta.25":
+"@dxos/gem-core@^1.0.0-beta.25", "@dxos/gem-core@~1.0.0-beta.25":
   version "1.0.0-beta.25"
   resolved "https://registry.yarnpkg.com/@dxos/gem-core/-/gem-core-1.0.0-beta.25.tgz#85b551d05c32fe9162bae8882bce6c48d7d8a0f6"
   integrity sha512-F+2CUF0gAmSto++6SyTYIQwSRg2wg397olNaJYBHqfxPAHwHT1narMfxb7zbwn/DXtrbcazZRUqk5ZXjk5B+xw==
@@ -1329,7 +1322,7 @@
     react-dom "^16.13.1"
     react-resize-aware "^3.0.0"
 
-"@dxos/gem-spore@1.0.0-beta.25":
+"@dxos/gem-spore@~1.0.0-beta.25":
   version "1.0.0-beta.25"
   resolved "https://registry.yarnpkg.com/@dxos/gem-spore/-/gem-spore-1.0.0-beta.25.tgz#de804677667c29cc616c056f27abbd35bf172297"
   integrity sha512-m7UpcXByhvR1azrA8THc1XuCxhgL3F9CGnnnw+JeaH3Rrm9NpCfr25JLnWoEXcOP7Zy9KrdtcrEGP6CkCQveLQ==
@@ -1387,23 +1380,43 @@
     protobufjs "^6.9.0"
     source-map-support "^0.5.12"
 
-"@dxos/network-devtools@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@dxos/network-devtools/-/network-devtools-1.0.4.tgz#2dc1d7f72575b52340b1922028d21589915b5216"
-  integrity sha512-EZSqlAVy5moc+OaL7vmeQAICF2UaS9Vi/r3xCjq8KtWv11ioaVK59Di/d0ivTOjRO1jm23nju2KuDqelY4Q9Pg==
+"@dxos/network-devtools@~1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/network-devtools/-/network-devtools-1.0.5.tgz#39463ac1ee28a6af119a7c7815425769b884f3ac"
+  integrity sha512-HcJ3libwBwm29h8Znd/cxyk3FpK/nr1MkXAbKJvx0gLc9HLxO3mR5aVAvB2uHbXQQdkKp1tZy4oNyorfDcwzpQ==
   dependencies:
-    "@dxos/gem-core" "1.0.0-beta.25"
-    "@dxos/gem-spore" "1.0.0-beta.25"
-    "@dxos/network-manager" "1.0.4"
-    "@dxos/react-ux" "~2.7.41-alpha.0"
+    "@dxos/gem-core" "~1.0.0-beta.25"
+    "@dxos/gem-spore" "~1.0.0-beta.25"
+    "@dxos/network-manager" "1.0.5"
+    "@dxos/react-ux" "~2.7.43-alpha.0"
     "@geut/discovery-swarm-webrtc" "^4.0.2"
     "@material-ui/core" "^4.11.2"
     "@types/react" "^17.0.0"
     "@wirelineio/discovery-swarm-memory" "^0.2.17"
-    react "^17.0.1"
     react-resize-aware "^3.1.0"
 
-"@dxos/network-manager@1.0.4", "@dxos/network-manager@~1.0.4":
+"@dxos/network-manager@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/network-manager/-/network-manager-1.0.5.tgz#42883dfd9003169f79579c75c6b0de81cddfef4b"
+  integrity sha512-6BacCJtm5X2Gxq9ywjrbKlpMLSDNmoldETmkMG3Ewc3MpJF+T+qXfXraP/oem37mb6+gIqTfyjaYN1NEtGuAFA==
+  dependencies:
+    "@dxos/async" "~1.0.2-alpha.0"
+    "@dxos/crypto" "~1.0.7"
+    "@dxos/metrics" "~1.0.0-beta.9"
+    "@dxos/protocol" "1.0.5"
+    "@dxos/util" "~2.6.16"
+    "@types/mocha" "^8.0.4"
+    "@types/simple-peer" "^9.6.1"
+    "@types/ws" "^7.4.0"
+    assert "^2.0.0"
+    debug "^4.1.1"
+    isomorphic-ws "^4.0.1"
+    nanomessage-rpc "^3.0.0"
+    simple-peer "^9.9.3"
+    wrtc "^0.4.6"
+    xor-distance "^2.0.0"
+
+"@dxos/network-manager@~1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@dxos/network-manager/-/network-manager-1.0.4.tgz#9c56482191ab195fd2f8ee55fd5db6eaa20c08d9"
   integrity sha512-FLSWUyIgLeuTZ1U/svpo6UaAfQqOHDdU+oxBh67IAe0PHQvSkUCxCOQAx5W9sqmR/2fH+Jm3QkGkswlh4uf4ow==
@@ -1489,6 +1502,24 @@
     signal-promise "^1.0.3"
     source-map-support "^0.5.12"
 
+"@dxos/protocol@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.0.5.tgz#7b9a2ecc99a06d0fe26a9561e07002da2e8014c6"
+  integrity sha512-H7kil9KfC9SKt0mE4sLRHSTmMsLj6seMXlofRySovQ/Uze6lpxDtNKtaRN1NmcZ2+htwkTZbvhvii6tPuMlGCw==
+  dependencies:
+    "@dxos/codec-protobuf" "1.1.0-beta.10"
+    assert "^2.0.0"
+    buffer-json-encoding "^1.0.2"
+    debug "^4.1.1"
+    end-of-stream "^1.4.4"
+    humanhash "^1.0.4"
+    hypercore-protocol "^6.11.1"
+    nanoerror "^1.2.1"
+    nanomessage "^5.4.0"
+    nanoresource-promise "^2.0.0"
+    signal-promise "^1.0.3"
+    source-map-support "^0.5.12"
+
 "@dxos/protocol@1.1.0-beta.21", "@dxos/protocol@^1.1.0-beta.21", "@dxos/protocol@~1.1.0-beta.21":
   version "1.1.0-beta.21"
   resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.1.0-beta.21.tgz#f408b1dc1b62f22d1e1622ff2cae07bbf903948a"
@@ -1546,7 +1577,7 @@
     random-access-memory "^3.1.1"
     random-access-web "^2.0.3"
 
-"@dxos/react-ux@2.7.44":
+"@dxos/react-ux@2.7.44", "@dxos/react-ux@~2.7.43-alpha.0":
   version "2.7.44"
   resolved "https://registry.yarnpkg.com/@dxos/react-ux/-/react-ux-2.7.44.tgz#c9d07ad67deeeea8808d0790c270cea417d11a14"
   integrity sha512-xsU7MzSzkd92di27dJSbf10K5pdMD59nmwud+S7Q9flNp4uiLI5w7nhFBor/mLwoogi5nqZWlXxs+Go6uXMScw==
@@ -1560,21 +1591,7 @@
     lodash.isplainobject "^4.0.6"
     uuid "^3.3.3"
 
-"@dxos/react-ux@~2.7.41-alpha.0":
-  version "2.7.41-alpha.0"
-  resolved "https://registry.yarnpkg.com/@dxos/react-ux/-/react-ux-2.7.41-alpha.0.tgz#499d6fc4a735799a97277dfc221fb4243238d282"
-  integrity sha512-LsMoaMPGJWmH1kCy5+pvblnqxlh665bBXgceE7aBA2IQZwSHQhorz4r0WPjqONmzW8mmHWc3OoMTAI/PSr3c3A==
-  dependencies:
-    "@dxos/crypto" "1.0.7"
-    "@dxos/debug" "1.0.0-beta.73"
-    "@material-ui/core" "^4.9.0"
-    "@material-ui/icons" "^4.5.1"
-    "@material-ui/lab" "^4.0.0-alpha.42"
-    clsx "^1.0.4"
-    lodash.isplainobject "^4.0.6"
-    uuid "^3.3.3"
-
-"@dxos/util@^2.6.17", "@dxos/util@~2.6.17":
+"@dxos/util@^2.6.17", "@dxos/util@~2.6.16", "@dxos/util@~2.6.17":
   version "2.6.17"
   resolved "https://registry.yarnpkg.com/@dxos/util/-/util-2.6.17.tgz#99161941b89779b5353a2d0c764012de67522d5a"
   integrity sha512-EayWyXpvjILG0GO1XLliPmvdgi45zW1Z5MAG/4gbZPGbvv39cOhmAcc0hAhoWiVMwgyKFrx03Fr5Y+uRlEBV9w==
@@ -9356,7 +9373,7 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-"jsondown@github:dxos/jsondown":
+jsondown@dxos/jsondown:
   version "1.0.0"
   resolved "https://codeload.github.com/dxos/jsondown/tar.gz/0bec0436f00973e7f2528115c72a5ab96dc45576"
   dependencies:
@@ -12406,14 +12423,6 @@ react@^16.13.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-
-react@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
-  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 read-cmd-shim@^1.0.1:
   version "1.0.5"
