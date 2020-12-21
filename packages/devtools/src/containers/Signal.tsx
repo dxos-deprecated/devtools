@@ -13,6 +13,7 @@ import { JsonTreeView } from '@dxos/react-ux';
 import AutocompleteFilter from '../components/AutocompleteFilter';
 import { useAsyncEffect } from '../hooks/async-effect';
 import { useBridge } from '../hooks/bridge';
+import { SignalApi } from '@dxos/network-manager';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +21,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     flex: 1,
     overflow: 'hidden',
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    fontSize: '1.5em'
   },
 
   filter: {
@@ -41,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 export default function Signal () {
   const classes = useStyles();
   const [bridge] = useBridge();
-  const [data, setData] = useState({});
+  const [data, setData] = useState<SignalApi.Status[]>([]);
   const [topics, setTopics] = useState();
   const [selectedTopic, setSelectedTopic] = useState();
 
@@ -59,7 +61,7 @@ export default function Signal () {
 
   return (
     <div className={classes.root}>
-      {/* <SignalStatus status={[]} /> */}
+      <SignalStatus status={data} />
     </div>
   );
 }
