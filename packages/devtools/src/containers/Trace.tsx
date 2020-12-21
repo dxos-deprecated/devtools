@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { Button, makeStyles } from '@material-ui/core';
 
 // import { PeerGraph } from '@dxos/network-devtools';
-import { SignalStatus, SignalTrace } from '@dxos/network-devtools';
+import { SignalStatus } from '@dxos/network-devtools';
 import { JsonTreeView } from '@dxos/react-ux';
 
 import AutocompleteFilter from '../components/AutocompleteFilter';
@@ -22,9 +22,7 @@ const useStyles = makeStyles(theme => ({
     flex: 1,
     overflow: 'hidden',
     padding: theme.spacing(2),
-    fontSize: '1.5em',
-    overflowY: 'auto',
-    overflowX: 'auto'
+    fontSize: '1.5em'
   },
 
   filter: {
@@ -42,28 +40,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Signal () {
+export default function Trace () {
   const classes = useStyles();
   const [bridge] = useBridge();
-  const [status, setStatus] = useState<SignalApi.Status[]>([]);
-  const [trace, setTrace] = useState<SignalApi.CommandTrace[]>([]);
+  const [data, setData] = useState<SignalApi.Status[]>([]);
+  const [topics, setTopics] = useState();
+  const [selectedTopic, setSelectedTopic] = useState();
 
   useAsyncEffect(async () => {
     const stream = await bridge.openStream('network.signal.status');
-    stream.onMessage(data => setStatus(data));
-    return () => stream.close();
-  }, [bridge]);
 
-  useAsyncEffect(async () => {
-    const stream = await bridge.openStream('network.signal.trace');
-    stream.onMessage(data => setTrace(data));
+    stream.onMessage(data => {
+      console.log('network.signal.status received');
+      console.log({ data });
+      setData(data);
+    });
+
     return () => stream.close();
   }, [bridge]);
 
   return (
     <div className={classes.root}>
-      <SignalStatus status={status} />
-      <SignalTrace trace={trace} />
+      <SignalStatus status={data} />
     </div>
   );
 }

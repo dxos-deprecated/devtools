@@ -216,9 +216,6 @@ const App = () => {
       <div className={className('mesh.signal')}>
         <Signal />
       </div>
-      <div className={className('mesh.trace')}>
-        <p>TODO trace</p>
-      </div>
       <div className={className('mesh.swarm')}>
         <p>TODO swarm graph</p>
       </div>
