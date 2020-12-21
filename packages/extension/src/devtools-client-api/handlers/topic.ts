@@ -2,7 +2,11 @@
 // Copyright 2020 DXOS.org
 //
 
-export default ({ hook, bridge }) => {
+import Bridge from 'crx-bridge';
+
+import { DevtoolsContext } from '@dxos/client/dist/src/devtools-context';
+
+export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge}) => {
   bridge.onMessage('topics', () => {
     try {
       return Array.from(new Set(hook.feedStore

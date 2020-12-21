@@ -21,7 +21,7 @@ import StoreIcon from '@material-ui/icons/Storage';
 import EventsIcon from '@material-ui/icons/Timer';
 import KeyIcon from '@material-ui/icons/VpnKey';
 
-import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
+import { JsonTreeView } from '@dxos/react-ux';
 
 import { ConfigView } from './containers/ConfigView';
 import FeedStore from './containers/FeedStore';
@@ -126,6 +126,11 @@ const items = [
         id: 'mesh.swarm',
         title: 'Swarm',
         icon: SwarmIcon
+      },
+      {
+        id: 'mesh.signal',
+        title: 'Signal',
+        icon: SwarmIcon
       }
     ]
   }
@@ -207,9 +212,11 @@ const App = () => {
       <div className={className('echo.snapshots')}>
         <SnapshotsView />
       </div>
+      <div className={className('mesh.signal')}>
+        <p>TODO</p>
+      </div>
       <div className={className('mesh.swarm')}>
-        {/* TODO(burdon): Any presence information? */}
-        <div>SWARM CONNECTIONS</div>
+        <p>TODO</p>
       </div>
     </div>
   );
