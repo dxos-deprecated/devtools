@@ -9,10 +9,10 @@ import { DevtoolsContext } from '@dxos/client/dist/src/devtools-context';
 export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge}) => {
   bridge.onMessage('topics', () => {
     try {
-      return hook.feedStore
+      return Array.from(new Set(hook.feedStore
         .getDescriptors()
         .filter(descriptor => descriptor.opened)
-        .map(({ metadata }) => metadata.partyKey.toString('hex'));
+        .map(({ metadata }) => metadata.partyKey.toString('hex'))));
     } catch (e) {
       console.error('DXOS DevTools: topics handler failed to respond');
       console.log(e);
