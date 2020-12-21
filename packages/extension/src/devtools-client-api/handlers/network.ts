@@ -15,7 +15,8 @@ async function subscribeToNetworkStatus (hook: DevtoolsContext, stream: Stream) 
   }
 
   hook.networkManager.signal.statusChanged.on(reportError(update));
-  await update();
+  // This is needed to alleviate a race condition where update is sent before devtools subscribes to the stream.
+  setTimeout(() => update(), 30);
 }
 
 async function subscribeToNetworkTrace (hook: DevtoolsContext, stream: Stream) {
