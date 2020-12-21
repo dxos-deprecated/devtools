@@ -70,7 +70,7 @@ export default function Signal () {
       })));
     };
     await updatePeers();
-    const interval = setInterval(updatePeers, 5000);
+    const interval = setInterval(updatePeers, 2000);
     return () => clearInterval(interval);
   }, [bridge, selectedTopic]);
 
