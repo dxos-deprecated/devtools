@@ -4,16 +4,14 @@
 
 import React, { useState } from 'react';
 
-import { Button, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
 // import { PeerGraph } from '@dxos/network-devtools';
 import { SignalStatus, SignalTrace } from '@dxos/network-devtools';
-import { JsonTreeView } from '@dxos/react-ux';
+import { SignalApi } from '@dxos/network-manager';
 
-import AutocompleteFilter from '../components/AutocompleteFilter';
 import { useAsyncEffect } from '../hooks/async-effect';
 import { useBridge } from '../hooks/bridge';
-import { SignalApi } from '@dxos/network-manager';
 
 const useStyles = makeStyles(theme => ({
   root: {
