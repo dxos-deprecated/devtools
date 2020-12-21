@@ -1380,18 +1380,41 @@
     protobufjs "^6.9.0"
     source-map-support "^0.5.12"
 
-"@dxos/network-devtools@file:packages/devtools/.yalc/@dxos/network-devtools":
-  version "1.0.4"
+"@dxos/network-devtools@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/network-devtools/-/network-devtools-1.0.5.tgz#39463ac1ee28a6af119a7c7815425769b884f3ac"
+  integrity sha512-HcJ3libwBwm29h8Znd/cxyk3FpK/nr1MkXAbKJvx0gLc9HLxO3mR5aVAvB2uHbXQQdkKp1tZy4oNyorfDcwzpQ==
   dependencies:
     "@dxos/gem-core" "~1.0.0-beta.25"
     "@dxos/gem-spore" "~1.0.0-beta.25"
-    "@dxos/network-manager" "~1.0.4"
+    "@dxos/network-manager" "1.0.5"
     "@dxos/react-ux" "~2.7.43-alpha.0"
     "@geut/discovery-swarm-webrtc" "^4.0.2"
     "@material-ui/core" "^4.11.2"
     "@types/react" "^17.0.0"
     "@wirelineio/discovery-swarm-memory" "^0.2.17"
     react-resize-aware "^3.1.0"
+
+"@dxos/network-manager@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/network-manager/-/network-manager-1.0.5.tgz#42883dfd9003169f79579c75c6b0de81cddfef4b"
+  integrity sha512-6BacCJtm5X2Gxq9ywjrbKlpMLSDNmoldETmkMG3Ewc3MpJF+T+qXfXraP/oem37mb6+gIqTfyjaYN1NEtGuAFA==
+  dependencies:
+    "@dxos/async" "~1.0.2-alpha.0"
+    "@dxos/crypto" "~1.0.7"
+    "@dxos/metrics" "~1.0.0-beta.9"
+    "@dxos/protocol" "1.0.5"
+    "@dxos/util" "~2.6.16"
+    "@types/mocha" "^8.0.4"
+    "@types/simple-peer" "^9.6.1"
+    "@types/ws" "^7.4.0"
+    assert "^2.0.0"
+    debug "^4.1.1"
+    isomorphic-ws "^4.0.1"
+    nanomessage-rpc "^3.0.0"
+    simple-peer "^9.9.3"
+    wrtc "^0.4.6"
+    xor-distance "^2.0.0"
 
 "@dxos/network-manager@~1.0.4":
   version "1.0.4"
@@ -1479,6 +1502,24 @@
     signal-promise "^1.0.3"
     source-map-support "^0.5.12"
 
+"@dxos/protocol@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.0.5.tgz#7b9a2ecc99a06d0fe26a9561e07002da2e8014c6"
+  integrity sha512-H7kil9KfC9SKt0mE4sLRHSTmMsLj6seMXlofRySovQ/Uze6lpxDtNKtaRN1NmcZ2+htwkTZbvhvii6tPuMlGCw==
+  dependencies:
+    "@dxos/codec-protobuf" "1.1.0-beta.10"
+    assert "^2.0.0"
+    buffer-json-encoding "^1.0.2"
+    debug "^4.1.1"
+    end-of-stream "^1.4.4"
+    humanhash "^1.0.4"
+    hypercore-protocol "^6.11.1"
+    nanoerror "^1.2.1"
+    nanomessage "^5.4.0"
+    nanoresource-promise "^2.0.0"
+    signal-promise "^1.0.3"
+    source-map-support "^0.5.12"
+
 "@dxos/protocol@1.1.0-beta.21", "@dxos/protocol@^1.1.0-beta.21", "@dxos/protocol@~1.1.0-beta.21":
   version "1.1.0-beta.21"
   resolved "https://registry.yarnpkg.com/@dxos/protocol/-/protocol-1.1.0-beta.21.tgz#f408b1dc1b62f22d1e1622ff2cae07bbf903948a"
@@ -1550,7 +1591,7 @@
     lodash.isplainobject "^4.0.6"
     uuid "^3.3.3"
 
-"@dxos/util@^2.6.17", "@dxos/util@~2.6.17":
+"@dxos/util@^2.6.17", "@dxos/util@~2.6.16", "@dxos/util@~2.6.17":
   version "2.6.17"
   resolved "https://registry.yarnpkg.com/@dxos/util/-/util-2.6.17.tgz#99161941b89779b5353a2d0c764012de67522d5a"
   integrity sha512-EayWyXpvjILG0GO1XLliPmvdgi45zW1Z5MAG/4gbZPGbvv39cOhmAcc0hAhoWiVMwgyKFrx03Fr5Y+uRlEBV9w==
