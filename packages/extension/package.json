@@ -16,7 +16,7 @@
     "@babel/runtime": "^7.9.6",
     "@dxos/client": "2.7.44",
     "@dxos/credentials": "^1.0.1-beta.4",
-    "@dxos/crypto": "^1.0.0-beta.10",
+    "@dxos/crypto": "~1.0.7",
     "@dxos/debug": "^1.0.0-beta.41",
     "@dxos/devtools": "1.0.0",
     "@dxos/metrics": "^1.0.0-beta.9",

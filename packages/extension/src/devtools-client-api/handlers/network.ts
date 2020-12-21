@@ -5,6 +5,7 @@
 import Bridge, { Stream } from 'crx-bridge';
 
 import { DevtoolsContext } from '@dxos/client/dist/src/devtools-context';
+import { PublicKey } from '@dxos/crypto';
 import { SignalApi } from '@dxos/network-manager';
 
 async function subscribeToNetworkStatus (hook: DevtoolsContext, stream: Stream) {
@@ -54,6 +55,17 @@ export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge 
   });
   bridge.onOpenStreamChannel('network.topics', (stream) => {
     reportError(subscribeToNetworkTopics)(hook, stream);
+  });
+  bridge.onMessage('network.peers', ({ data }) => {
+    console.log('network.peers message received', { data });
+    if (!data && !data.topic) {
+      throw new Error('Expected a network topic');
+    }
+    const swarm = hook.networkManager.getSwarm(PublicKey.from(data.topic));
+    console.log('swarm', swarm);
+    const map = hook.networkManager.getSwarmMap(PublicKey.from(data.topic));
+    console.log('map', map);
+    return map?.peers.map(peer => ({ ...peer, id: peer.id.toHex() }));
   });
 };
 

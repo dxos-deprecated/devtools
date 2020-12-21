@@ -6,10 +6,9 @@ import React, { useState } from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
-// import { PeerGraph } from '@dxos/network-devtools';
-import { PublicKey, keyToString } from '@dxos/crypto';
-import { SignalStatus, SignalTrace } from '@dxos/network-devtools';
-import { SignalApi } from '@dxos/network-manager';
+import { PublicKey } from '@dxos/crypto';
+import { PeerGraph } from '@dxos/network-devtools';
+import { PeerState } from '@dxos/network-manager';
 
 import AutocompleteFilter from '../components/AutocompleteFilter';
 import { useAsyncEffect } from '../hooks/async-effect';
@@ -47,18 +46,33 @@ export default function Signal () {
   const [bridge] = useBridge();
   const [networkTopics, setNetworkTopics] = useState<{topic: string, label: string}[]>([]);
   const [selectedTopic, setSelectedTopic] = useState('');
+  const [peers, setPeers] = useState<PeerState[]>([]);
 
   console.log('networkTopics', networkTopics);
   console.log('selectedTopic', selectedTopic);
+  console.log('peers', peers);
 
   useAsyncEffect(async () => {
     const stream = await bridge.openStream('network.topics');
     stream.onMessage(data => {
-      console.log('Swarm graph received', data);
+      // console.log('Swarm graph received', data);
       setNetworkTopics(data);
     });
     return () => stream.close();
   }, [bridge]);
+
+  useAsyncEffect(async () => {
+    if (!selectedTopic) {
+      setPeers([]);
+      return;
+    }
+    const interval = setInterval(async () => {
+      const result = await bridge.send('network.peers', { topic: selectedTopic });
+      console.log('result', result);
+      setPeers(result.map((peer: any) => ({ ...peer, id: PublicKey.from(peer.id) })));
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [bridge, selectedTopic]);
 
   const options = networkTopics.map(topic => topic.topic);
 
@@ -68,6 +82,10 @@ export default function Signal () {
         <AutocompleteFilter label='Topic' options={options} onChange={setSelectedTopic} value={selectedTopic} />
       </div>
       <p>{selectedTopic ? `Selected ${selectedTopic}` : 'Topic not selected.'}</p>
+      <PeerGraph
+        peers={peers}
+        size={{ width: 400, height: 400 }}
+      />
     </div>
   );
 }
