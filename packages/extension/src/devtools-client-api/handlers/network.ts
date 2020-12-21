@@ -33,7 +33,7 @@ async function subscribeToNetworkTopics (hook: DevtoolsContext, stream: Stream) 
   async function update () {
     const topics = hook.networkManager.topics;
     const labeledTopics = topics.map(topic => ({
-      topic: topic.asUint8Array(),
+      topic: topic.toHex(),
       label: hook.networkManager.getSwarm(topic)?.label ?? topic.toHex()
     }));
     console.log('labeledTopics in update:', labeledTopics);
