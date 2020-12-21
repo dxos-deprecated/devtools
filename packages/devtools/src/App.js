@@ -21,7 +21,7 @@ import StoreIcon from '@material-ui/icons/Storage';
 import EventsIcon from '@material-ui/icons/Timer';
 import KeyIcon from '@material-ui/icons/VpnKey';
 
-import JsonTreeView from '@dxos/react-ux/dist/es/components/JsonTreeView';
+import { JsonTreeView } from '@dxos/react-ux';
 
 import { ConfigView } from './containers/ConfigView';
 import FeedStore from './containers/FeedStore';
