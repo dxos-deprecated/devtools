@@ -63,7 +63,11 @@ export default function Signal () {
     }
     const updatePeers = async () => {
       const result = await bridge.send('network.peers', { topic: selectedTopic });
-      setPeers(result.map((peer: any) => ({ ...peer, id: PublicKey.from(peer.id) })));
+      setPeers(result.map((peer: any) => ({
+        ...peer,
+        id: PublicKey.from(peer.id),
+        connections: peer.connections.map((connection: any) => PublicKey.from(connection))
+      })));
     };
     await updatePeers();
     const interval = setInterval(updatePeers, 5000);
@@ -77,6 +81,7 @@ export default function Signal () {
       <div className={classes.filter}>
         <AutocompleteFilter label='Topic' options={options} onChange={setSelectedTopic} value={selectedTopic} />
       </div>
+      {!selectedTopic && <p>Topic not selected</p>}
       <p>{selectedTopic ? `Selected ${selectedTopic}` : 'Topic not selected.'}</p>
       <PeerGraph
         peers={peers}

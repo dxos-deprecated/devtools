@@ -57,7 +57,12 @@ export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge 
       throw new Error('Expected a network topic');
     }
     const map = hook.networkManager.getSwarmMap(PublicKey.from(data.topic));
-    return map?.peers.map(peer => ({ ...peer, id: peer.id.toHex() }));
+    return map?.peers.map(peer => ({
+      ...peer,
+      // There is a problem with pushing PublicKey through the bridge.
+      id: peer.id.toHex(),
+      connections: peer.connections.map(connection => connection.toHex())
+    }));
   });
 };
 
