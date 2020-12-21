@@ -39,7 +39,8 @@ async function subscribeToNetworkTopics (hook: DevtoolsContext, stream: Stream) 
   }
 
   hook.networkManager.topicsUpdated.on(reportError(update));
-  await update();
+  // This is needed to alleviate a race condition where update is sent before devtools subscribes to the stream.
+  setTimeout(() => update(), 30);
 }
 
 export default ({ hook, bridge }: {hook: DevtoolsContext, bridge: typeof Bridge }) => {

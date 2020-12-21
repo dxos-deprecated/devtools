@@ -81,12 +81,14 @@ export default function Signal () {
       <div className={classes.filter}>
         <AutocompleteFilter label='Topic' options={options} onChange={setSelectedTopic} value={selectedTopic} />
       </div>
-      {!selectedTopic && <p>Topic not selected</p>}
-      <p>{selectedTopic ? `Selected ${selectedTopic}` : 'Topic not selected.'}</p>
-      <PeerGraph
-        peers={peers}
-        size={{ width: 400, height: 400 }}
-      />
+      {selectedTopic ? (
+        <PeerGraph
+          peers={peers}
+          size={{ width: 400, height: 400 }}
+        />
+      ) : (
+        <p>Topic not selected</p>
+      )}
     </div>
   );
 }
