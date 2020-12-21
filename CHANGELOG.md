@@ -1,5 +1,17 @@
 # Changelog
 
+### [1.0.3](https://www.github.com/dxos/devtools/compare/v1.0.2...v1.0.3) (2020-12-21)
+
+
+### Features
+
+* Networking visiblity ([#45](https://www.github.com/dxos/devtools/issues/45)) ([ef5b096](https://www.github.com/dxos/devtools/commit/ef5b096a1ca73c845d911c4e73c113f0fc3da5f5))
+
+
+### Bug Fixes
+
+* key display ([#43](https://www.github.com/dxos/devtools/issues/43)) ([7f8bbf6](https://www.github.com/dxos/devtools/commit/7f8bbf6cff1402ef207a12a53af1db38354943b2))
+
 ### [1.0.2](https://www.github.com/dxos/devtools/compare/v1.0.1...v1.0.2) (2020-12-16)
 
 
